@@ -1,0 +1,19 @@
+# Build products
+/build/
+*.o
+*.a
+*.d
+
+# Stray Slurm logs in the repo root (logs kept as evidence go under results/)
+/*.out
+/slurm-*.out
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Editor / OS files
+.vscode/
+*.swp
+*~
+.DS_Store

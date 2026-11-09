@@ -1,0 +1,50 @@
+=== job metadata ===
+date=2026-11-09T23:01:37+01:00
+host=haskell
+slurm_job_id=28010
+slurm_job_name=nbody-serial
+slurm_partition=cpu
+slurm_nodelist=haskell
+slurm_ntasks=1
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=unset
+omp_places=unset
+git_head=0f39c80938b566177acc526b1e4dbe8a3a413b46
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0   2) GCC/12.3.0
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      54%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+command=./build/nbody_serial --n 1000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== check run
+backend=serial n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=haskell slurm_job_id=28010 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=0.310189228 loop_seconds=0.307116864 seconds_per_step=0.003071169 interactions_per_second=3.252833e+08 force_seconds=0.309916203 communication_seconds=0.000000000 integration_seconds=0.000262293 initial_energy=-0.46604099240730257 final_energy=-0.46604098689396517 energy_change=5.5133373977334088e-09 relative_energy_change=-1.1830155474638926e-08 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-2.1895801686523664e-19 momentum_y=8.6736173798840355e-19 momentum_z=1.2400562347802957e-18
+=== timed run rep=1
+backend=serial n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=haskell slurm_job_id=28010 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=0.310534115 loop_seconds=0.307466338 seconds_per_step=0.003074663 interactions_per_second=3.249136e+08 force_seconds=0.310259999 communication_seconds=0.000000000 integration_seconds=0.000261634
+=== timed run rep=2
+backend=serial n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=haskell slurm_job_id=28010 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=0.310583798 loop_seconds=0.307512275 seconds_per_step=0.003075123 interactions_per_second=3.248651e+08 force_seconds=0.310308003 communication_seconds=0.000000000 integration_seconds=0.000265096
+=== timed run rep=3
+backend=serial n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=haskell slurm_job_id=28010 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=0.310029101 loop_seconds=0.306956237 seconds_per_step=0.003069562 interactions_per_second=3.254536e+08 force_seconds=0.309755154 communication_seconds=0.000000000 integration_seconds=0.000261371
+JobID           JobName    Elapsed   TotalCPU     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- --------------- ---------- 
+28010        nbody-ser+   00:00:41  00:01.258                    haskell    RUNNING 
+28010.batch       batch   00:00:41   00:00:00                    haskell    RUNNING 
+28010.0      nbody_ser+   00:00:01  00:00.316      8888K         haskell  COMPLETED 
+28010.1      nbody_ser+   00:00:01  00:00.312     10028K         haskell  COMPLETED 
+28010.2      nbody_ser+   00:00:00  00:00.315      8740K         haskell  COMPLETED 
+28010.3      nbody_ser+   00:00:01  00:00.313      9044K         haskell  COMPLETED 

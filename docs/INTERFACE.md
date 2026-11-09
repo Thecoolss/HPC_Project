@@ -14,7 +14,7 @@ Backend names are `serial`, `openmp`, `hybrid` and `openacc`.
 | Path | Contents | Owner |
 |---|---|---|
 | `include/nbody.h` | Particle/config types, shared physics API, all force and partition signatures | Interface/serial |
-| `include/config.h`, `src/config.c` | Shared CLI parser (`--n --steps --dt --eps --seed --check --output`) | Interface/serial |
+| `include/config.h`, `src/config.c` | Shared CLI parser (`--n --steps --dt --eps --seed --check --output`) | Interface/serial; Integration maintains after handoff |
 | `include/report.h`, `src/report.c` | Shared `key=value` result line and `--output` state file | Interface/serial |
 | `src/particles.c` | Allocation, free, seeded initialization | Interface/serial |
 | `src/integrator.c` | `particles_kick`, `particles_drift` | Interface/serial |

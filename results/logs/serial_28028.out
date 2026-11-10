@@ -1,0 +1,50 @@
+=== job metadata ===
+date=2026-11-09T23:35:50+01:00
+host=fortran
+slurm_job_id=28028
+slurm_job_name=nbody-serial
+slurm_partition=cpu
+slurm_nodelist=fortran
+slurm_ntasks=1
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=unset
+omp_places=unset
+git_head=6d94fd867c32837dcfc17e8958cf54f76fc25153
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0   2) GCC/12.3.0
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      53%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+command=./build/nbody_serial --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== check run
+backend=serial n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28028 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=341.863182105 loop_seconds=311.125140626 seconds_per_step=31.112514063 interactions_per_second=3.214109e+08 force_seconds=341.860106461 communication_seconds=0.000000000 integration_seconds=0.003072920 initial_energy=-0.47055129572309962 final_energy=-0.47055129572013732 energy_change=2.9622970743048427e-12 relative_energy_change=-6.2953754483932707e-12 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-6.0053932856809224e-20 momentum_y=-2.4894827715395921e-20 momentum_z=-1.7966362904651761e-20
+=== timed run rep=1
+backend=serial n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28028 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=337.998343028 loop_seconds=307.284169757 seconds_per_step=30.728416976 interactions_per_second=3.254284e+08 force_seconds=337.995540927 communication_seconds=0.000000000 integration_seconds=0.002800640
+=== timed run rep=2
+backend=serial n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28028 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=337.876824906 loop_seconds=307.162134159 seconds_per_step=30.716213416 interactions_per_second=3.255577e+08 force_seconds=337.873967068 communication_seconds=0.000000000 integration_seconds=0.002856125
+=== timed run rep=3
+backend=serial n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28028 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=337.723957855 loop_seconds=307.015028905 seconds_per_step=30.701502890 interactions_per_second=3.257137e+08 force_seconds=337.721154271 communication_seconds=0.000000000 integration_seconds=0.002801582
+JobID           JobName    Elapsed   TotalCPU     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- --------------- ---------- 
+28028        nbody-ser+   00:23:08  23:03.704                    fortran    RUNNING 
+28028.batch       batch   00:23:08   00:00:00                    fortran    RUNNING 
+28028.0      nbody_ser+   00:06:11  06:10.313      9992K         fortran  COMPLETED 
+28028.1      nbody_ser+   00:05:39  05:37.938      9288K         fortran  COMPLETED 
+28028.2      nbody_ser+   00:05:38  05:37.802      8340K         fortran  COMPLETED 
+28028.3      nbody_ser+   00:05:38  05:37.649      8348K         fortran  COMPLETED 

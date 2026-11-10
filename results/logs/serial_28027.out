@@ -1,0 +1,50 @@
+=== job metadata ===
+date=2026-11-09T23:35:20+01:00
+host=fortran
+slurm_job_id=28027
+slurm_job_name=nbody-serial
+slurm_partition=cpu
+slurm_nodelist=fortran
+slurm_ntasks=1
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=unset
+omp_places=unset
+git_head=6d94fd867c32837dcfc17e8958cf54f76fc25153
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0   2) GCC/12.3.0
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      54%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+command=./build/nbody_serial --n 20000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== check run
+backend=serial n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28027 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=123.828959759 loop_seconds=122.605476836 seconds_per_step=1.226054768 interactions_per_second=3.262334e+08 force_seconds=123.821991399 communication_seconds=0.000000000 integration_seconds=0.006944114 initial_energy=-0.47175378898859543 final_energy=-0.47175378865076895 energy_change=3.3782648900526624e-10 relative_energy_change=-7.1610763260543334e-10 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=3.0916702574781962e-19 momentum_y=1.9947625907838773e-19 momentum_z=2.4436900528286565e-19
+=== timed run rep=1
+backend=serial n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28027 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=123.709468169 loop_seconds=122.485362142 seconds_per_step=1.224853621 interactions_per_second=3.265533e+08 force_seconds=123.703253802 communication_seconds=0.000000000 integration_seconds=0.006193493
+=== timed run rep=2
+backend=serial n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28027 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=123.661802714 loop_seconds=122.438573643 seconds_per_step=1.224385736 interactions_per_second=3.266781e+08 force_seconds=123.656262393 communication_seconds=0.000000000 integration_seconds=0.005531670
+=== timed run rep=3
+backend=serial n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28027 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=123.617568165 loop_seconds=122.394503171 seconds_per_step=1.223945032 interactions_per_second=3.267957e+08 force_seconds=123.611839029 communication_seconds=0.000000000 integration_seconds=0.005720495
+JobID           JobName    Elapsed   TotalCPU     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- --------------- ---------- 
+28027        nbody-ser+   00:08:25  08:15.951                    fortran    RUNNING 
+28027.batch       batch   00:08:25   00:00:00                    fortran    RUNNING 
+28027.0      nbody_ser+   00:02:06  02:04.987      9228K         fortran  COMPLETED 
+28027.1      nbody_ser+   00:02:04  02:03.700      9020K         fortran  COMPLETED 
+28027.2      nbody_ser+   00:02:05  02:03.655      9608K         fortran  COMPLETED 
+28027.3      nbody_ser+   00:02:04  02:03.608      9244K         fortran  COMPLETED 

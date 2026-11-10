@@ -1,0 +1,50 @@
+=== job metadata ===
+date=2026-11-09T23:35:20+01:00
+host=fortran
+slurm_job_id=28026
+slurm_job_name=nbody-serial
+slurm_partition=cpu
+slurm_nodelist=fortran
+slurm_ntasks=1
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=unset
+omp_places=unset
+git_head=6d94fd867c32837dcfc17e8958cf54f76fc25153
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0   2) GCC/12.3.0
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      54%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+command=./build/nbody_serial --n 10000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== check run
+backend=serial n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28026 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=31.015559627 loop_seconds=30.709629748 seconds_per_step=0.307096297 interactions_per_second=3.255982e+08 force_seconds=31.012528637 communication_seconds=0.000000000 integration_seconds=0.003018775 initial_energy=-0.47137370433826925 final_energy=-0.47137370391945915 energy_change=4.1881009771316258e-10 relative_energy_change=-8.8848846225120405e-10 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-9.8361700999905627e-20 momentum_y=2.0921713797181218e-19 momentum_z=-6.1833405149563925e-19
+=== timed run rep=1
+backend=serial n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28026 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=30.922280355 loop_seconds=30.615986719 seconds_per_step=0.306159867 interactions_per_second=3.265941e+08 force_seconds=30.919113535 communication_seconds=0.000000000 integration_seconds=0.003146962
+=== timed run rep=2
+backend=serial n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28026 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=30.941014151 loop_seconds=30.634477385 seconds_per_step=0.306344774 interactions_per_second=3.263970e+08 force_seconds=30.937891655 communication_seconds=0.000000000 integration_seconds=0.003101294
+=== timed run rep=3
+backend=serial n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28026 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=32.486062433 loop_seconds=32.179063907 seconds_per_step=0.321790639 interactions_per_second=3.107300e+08 force_seconds=32.482993414 communication_seconds=0.000000000 integration_seconds=0.003048709
+JobID           JobName    Elapsed   TotalCPU     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- --------------- ---------- 
+28026        nbody-ser+   00:02:14  02:05.649                    fortran    RUNNING 
+28026.batch       batch   00:02:14   00:00:00                    fortran    RUNNING 
+28026.0      nbody_ser+   00:00:32  00:31.306     10092K         fortran  COMPLETED 
+28026.1      nbody_ser+   00:00:32  00:30.921      8804K         fortran  COMPLETED 
+28026.2      nbody_ser+   00:00:31  00:30.934      8504K         fortran  COMPLETED 
+28026.3      nbody_ser+   00:00:33  00:32.487      9884K         fortran  COMPLETED 

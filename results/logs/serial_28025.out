@@ -1,0 +1,50 @@
+=== job metadata ===
+date=2026-11-09T23:35:20+01:00
+host=fortran
+slurm_job_id=28025
+slurm_job_name=nbody-serial
+slurm_partition=cpu
+slurm_nodelist=fortran
+slurm_ntasks=1
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=unset
+omp_places=unset
+git_head=6d94fd867c32837dcfc17e8958cf54f76fc25153
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0   2) GCC/12.3.0
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      54%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+command=./build/nbody_serial --n 5000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== check run
+backend=serial n=5000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28025 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=7.729365733 loop_seconds=7.652757353 seconds_per_step=0.076527574 interactions_per_second=3.266143e+08 force_seconds=7.728022883 communication_seconds=0.000000000 integration_seconds=0.001333709 initial_energy=-0.47185762405819387 final_energy=-0.47185762385076369 energy_change=2.0743018414037806e-10 relative_energy_change=-4.3960333279429186e-10 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=7.513182242145644e-19 momentum_y=-4.2012834183813297e-19 momentum_z=4.2351647362715017e-20
+=== timed run rep=1
+backend=serial n=5000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28025 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=7.727183185 loop_seconds=7.650591849 seconds_per_step=0.076505918 interactions_per_second=3.267068e+08 force_seconds=7.725842851 communication_seconds=0.000000000 integration_seconds=0.001331338
+=== timed run rep=2
+backend=serial n=5000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28025 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=7.729440998 loop_seconds=7.652765127 seconds_per_step=0.076527651 interactions_per_second=3.266140e+08 force_seconds=7.728079482 communication_seconds=0.000000000 integration_seconds=0.001352445
+=== timed run rep=3
+backend=serial n=5000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28025 git_commit=0f39c80938b5 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror" elapsed_seconds=7.831000755 loop_seconds=7.748057199 seconds_per_step=0.077480572 interactions_per_second=3.225970e+08 force_seconds=7.829520206 communication_seconds=0.000000000 integration_seconds=0.001469234
+JobID           JobName    Elapsed   TotalCPU     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- --------------- ---------- 
+28025        nbody-ser+   00:00:40  00:31.095                    fortran    RUNNING 
+28025.batch       batch   00:00:40   00:00:00                    fortran    RUNNING 
+28025.0      nbody_ser+   00:00:09  00:07.803     10156K         fortran  COMPLETED 
+28025.1      nbody_ser+   00:00:08  00:07.729      8844K         fortran  COMPLETED 
+28025.2      nbody_ser+   00:00:08  00:07.730      8344K         fortran  COMPLETED 
+28025.3      nbody_ser+   00:00:09  00:07.831      8808K         fortran  COMPLETED 

@@ -14,6 +14,8 @@ LDLIBS = -lm
 #        OMP_LDLIBS='-L/opt/homebrew/opt/libomp/lib -lomp'
 OMP_CFLAGS ?= -fopenmp
 OMP_LDLIBS ?= -fopenmp
+# MPI compiler wrapper for the hybrid backend (needs the OpenMPI module).
+MPICC ?= mpicc
 
 GIT_COMMIT := $(shell git describe --always --dirty --abbrev=12 2>/dev/null || echo unavailable)
 BUILD_INFO = $(GIT_COMMIT) | $(CC) | $(CFLAGS)
@@ -27,7 +29,7 @@ COMMON_SOURCES := src/particles.c src/integrator.c src/diagnostics.c \
                   src/config.c src/report.c
 SERIAL_SOURCES := $(COMMON_SOURCES) src/force_serial.c
 
-.PHONY: all test clean FORCE
+.PHONY: all test test-hybrid hybrid clean FORCE
 
 all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp
 
@@ -44,6 +46,22 @@ $(BUILD_DIR)/nbody_serial: $(SERIAL_SOURCES) src/main_serial.c $(HEADERS) $(BUIL
 
 $(BUILD_DIR)/nbody_openmp: $(COMMON_SOURCES) src/force_openmp.c src/main_openmp.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(BUILD_INFO_CPPFLAGS) $(CFLAGS) $(OMP_CFLAGS) $(COMMON_SOURCES) src/force_openmp.c src/main_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
+
+# Hybrid MPI+OpenMP backend. Not part of `all` until OpenMPI is in
+# env/modules.sh; build it explicitly with `make hybrid`.
+HYBRID_SOURCES := $(COMMON_SOURCES) src/force_openmp.c src/decomposition.c
+
+hybrid: $(BUILD_DIR)/nbody_hybrid
+
+$(BUILD_DIR)/nbody_hybrid: $(HYBRID_SOURCES) src/main_hybrid.c $(HEADERS) $(BUILD_DIR)/build_info
+	$(MPICC) $(CPPFLAGS) -DNBODY_COMPILER='"$(MPICC)"' -DNBODY_BUILD_FLAGS='"$(CFLAGS)"' -DNBODY_GIT_COMMIT='"$(GIT_COMMIT)"' $(CFLAGS) $(OMP_CFLAGS) $(HYBRID_SOURCES) src/main_hybrid.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
+
+# partition_range unit tests: plain C, no MPI, runs anywhere.
+$(BUILD_DIR)/test_hybrid: src/decomposition.c tests/test_hybrid.c include/nbody.h | $(BUILD_DIR)
+	$(CC) $(CPPFLAGS) $(CFLAGS) src/decomposition.c tests/test_hybrid.c -o $@ $(LDLIBS)
+
+test-hybrid: $(BUILD_DIR)/test_hybrid
+	./$(BUILD_DIR)/test_hybrid
 
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)

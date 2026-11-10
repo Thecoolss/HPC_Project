@@ -8,6 +8,12 @@ WERROR ?= -Werror
 CFLAGS = -std=c11 $(OPTFLAGS) $(WARNFLAGS) $(WERROR)
 CPPFLAGS = -Iinclude
 LDLIBS = -lm
+# OpenMP flags. GCC on the cluster takes -fopenmp. On macOS (Apple clang +
+# Homebrew libomp) override them, e.g.:
+#   make OMP_CFLAGS='-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include' \
+#        OMP_LDLIBS='-L/opt/homebrew/opt/libomp/lib -lomp'
+OMP_CFLAGS ?= -fopenmp
+OMP_LDLIBS ?= -fopenmp
 
 GIT_COMMIT := $(shell git describe --always --dirty --abbrev=12 2>/dev/null || echo unavailable)
 BUILD_INFO = $(GIT_COMMIT) | $(CC) | $(CFLAGS)
@@ -23,7 +29,7 @@ SERIAL_SOURCES := $(COMMON_SOURCES) src/force_serial.c
 
 .PHONY: all test clean FORCE
 
-all: $(BUILD_DIR)/nbody_serial
+all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp
 
 $(BUILD_DIR):
 	mkdir -p $@
@@ -35,6 +41,9 @@ $(BUILD_DIR)/build_info: FORCE | $(BUILD_DIR)
 
 $(BUILD_DIR)/nbody_serial: $(SERIAL_SOURCES) src/main_serial.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(BUILD_INFO_CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) src/main_serial.c -o $@ $(LDLIBS)
+
+$(BUILD_DIR)/nbody_openmp: $(COMMON_SOURCES) src/force_openmp.c src/main_openmp.c $(HEADERS) $(BUILD_DIR)/build_info
+	$(CC) $(CPPFLAGS) $(BUILD_INFO_CPPFLAGS) $(CFLAGS) $(OMP_CFLAGS) $(COMMON_SOURCES) src/force_openmp.c src/main_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
 
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)

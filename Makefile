@@ -48,8 +48,13 @@ $(BUILD_DIR)/nbody_openmp: $(COMMON_SOURCES) src/force_openmp.c src/main_openmp.
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)
 
-test: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/test_nbody
+# OpenMP kernel tests: thread counts 1-8 against serial, sub-ranges, inputs.
+$(BUILD_DIR)/test_openmp: $(SERIAL_SOURCES) src/force_openmp.c tests/test_openmp.c $(HEADERS) | $(BUILD_DIR)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(OMP_CFLAGS) $(SERIAL_SOURCES) src/force_openmp.c tests/test_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
+
+test: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/test_nbody $(BUILD_DIR)/test_openmp
 	./$(BUILD_DIR)/test_nbody
+	./$(BUILD_DIR)/test_openmp
 	sh tests/test_cli.sh
 
 clean:

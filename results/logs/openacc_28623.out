@@ -1,0 +1,152 @@
+=== job metadata ===
+date=2026-11-11T17:51:44+01:00
+host=haskell
+slurm_job_id=28623
+slurm_job_name=nbody-openacc
+slurm_partition=gpu
+slurm_nodelist=haskell
+slurm_ntasks=1
+slurm_cpus_per_task=2
+omp_num_threads=unset
+omp_proc_bind=unset
+omp_places=unset
+git_head=a30296608f614dbbed5975c47af0f03538160876
+git_worktree=clean
+cc=
+--- modules
+module command not available
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      57%
+NUMA node(s):                            2
+--- gpu
+name, driver_version, memory.total [MiB]
+NVIDIA RTX 6000 Ada Generation, 580.126.09, 49140 MiB
+=== end metadata ===
+name, compute_cap, memory.total [MiB], driver_version
+NVIDIA RTX 6000 Ada Generation, 8.9, 49140 MiB, 580.126.09
+=== build
+nvc -Iinclude -DNBODY_COMPILER='"nvc"' \
+    -DNBODY_BUILD_FLAGS='"-std=c11 -O2 -acc -gpu=cc89,cc120 -Minfo=accel"' -DNBODY_GIT_COMMIT='"serial-baseline-v1-8-ga30296608f61"' \
+    -std=c11 -O2 -acc -gpu=cc89,cc120 -Minfo=accel src/particles.c src/integrator.c src/diagnostics.c src/config.c src/report.c src/force_openacc.c src/main_openacc.c -o build/nbody_openacc -lm
+src/particles.c:
+src/integrator.c:
+src/diagnostics.c:
+src/config.c:
+src/report.c:
+src/force_openacc.c:
+compute_accelerations_openacc:
+     34, Generating copyin(mass[:n],x[:n],z[:n],y[:n]) [if not already present]
+         Generating copyout(az[begin:count],ax[begin:count],ay[begin:count]) [if not already present]
+         Generating implicit firstprivate(n,i,begin,end)
+         Generating NVIDIA GPU code
+         39, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+         48, #pragma acc loop seq
+     48, Generating implicit firstprivate(epsilon_squared,G)
+src/main_openacc.c:
+main:
+    137, Generating enter data create(ay[:n],ax[:n],az[:n])
+         Generating enter data copyin(vy[:n],vx[:n],mass[:n],z[:n],y[:n],x[:n],vz[:n])
+    163, Generating exit data copyout(az[:n],ay[:n],ax[:n],vy[:n],vx[:n])
+         Generating exit data delete(mass[:n])
+         Generating exit data copyout(z[:n],y[:n],x[:n],vz[:n])
+kick_device:
+     29, Generating present(az[:n],vx[:n],vy[:n],vz[:n],ax[:n],ay[:n])
+         Generating implicit firstprivate(i,n)
+         Generating NVIDIA GPU code
+         33, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+     33, Generating implicit firstprivate(half_dt)
+drift_device:
+     45, Generating present(vz[:n],x[:n],y[:n],z[:n],vx[:n],vy[:n])
+         Generating implicit firstprivate(i,n)
+         Generating NVIDIA GPU code
+         49, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+     49, Generating implicit firstprivate(dt)
+nvc -Iinclude -std=c11 -O2 -acc -gpu=cc89,cc120 -Minfo=accel src/particles.c src/integrator.c src/diagnostics.c src/config.c src/report.c src/force_openacc.c src/force_serial.c tests/test_openacc.c -o build/test_openacc -lm
+src/particles.c:
+src/integrator.c:
+src/diagnostics.c:
+src/config.c:
+src/report.c:
+src/force_openacc.c:
+compute_accelerations_openacc:
+     34, Generating copyin(mass[:n],x[:n],z[:n],y[:n]) [if not already present]
+         Generating copyout(az[begin:count],ax[begin:count],ay[begin:count]) [if not already present]
+         Generating implicit firstprivate(n,i,begin,end)
+         Generating NVIDIA GPU code
+         39, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+         48, #pragma acc loop seq
+     48, Generating implicit firstprivate(epsilon_squared,G)
+src/force_serial.c:
+tests/test_openacc.c:
+=== kernel tests (outside a data region)
+PASS: full range matches serial
+PASS: sub-range matches serial
+PASS: targets outside the range are not written
+PASS: empty range writes nothing
+ALL PASS
+command=./build/nbody_openacc --n 1000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== check run (NVCOMPILER_ACC_TIME=1: per-kernel and transfer times)
+libcupti.so not found
+
+Accelerator Kernel Timing data
+/home/hpcb24/HPC_Project/src/force_openacc.c
+  compute_accelerations_openacc  NVIDIA  devicenum=0
+    time(us): 0
+    34: compute region reached 101 times
+        34: kernel launched 101 times
+            grid: [8]  block: [128]
+            elapsed time(us): total=80,059 max=1,014 min=789 avg=792
+    34: data region reached 202 times
+/home/hpcb24/HPC_Project/src/main_openacc.c
+  kick_device  NVIDIA  devicenum=0
+    time(us): 0
+    29: compute region reached 200 times
+        29: kernel launched 200 times
+            grid: [8]  block: [128]
+            elapsed time(us): total=1,719 max=13 min=8 avg=8
+    29: data region reached 400 times
+/home/hpcb24/HPC_Project/src/main_openacc.c
+  drift_device  NVIDIA  devicenum=0
+    time(us): 0
+    45: compute region reached 100 times
+        45: kernel launched 100 times
+            grid: [8]  block: [128]
+            elapsed time(us): total=855 max=10 min=8 avg=8
+    45: data region reached 200 times
+/home/hpcb24/HPC_Project/src/main_openacc.c
+  main  NVIDIA  devicenum=0
+    time(us): 100
+    137: data region reached 1 time
+        137: data copyin transfers: 7
+             device time(us): total=32 max=11 min=3 avg=4
+    163: data region reached 1 time
+        163: data copyout transfers: 9
+             device time(us): total=68 max=13 min=6 avg=7
+backend=openacc n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="NVIDIA RTX 6000 Ada Generation" host=haskell slurm_job_id=28623 git_commit=serial-baseline-v1-8-ga30296608f61 compiler=nvc compiler_version="EDG gcc 14.2 mode" build_flags="-std=c11 -O2 -acc -gpu=cc89,cc120 -Minfo=accel" elapsed_seconds=0.083909959 loop_seconds=0.082711753 seconds_per_step=0.000827118 interactions_per_second=1.207809e+09 force_seconds=0.080350962 communication_seconds=0.000343536 integration_seconds=0.003195316 initial_energy=-0.46604099240729779 final_energy=-0.46604098689396517 energy_change=5.5133326237744029e-09 relative_energy_change=-1.1830145230992923e-08 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-4.5571946062983523e-19 momentum_y=-2.4701933140478327e-21 momentum_z=7.2589212621273124e-19
+=== compare final state with serial
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-8-ga30296608f61 columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=openacc n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-8-ga30296608f61 columns=x,y,z,vx,vy,vz
+max_abs_diff x=5.551e-17 y=1.110e-16 z=1.110e-16 vx=3.053e-16 vy=2.776e-17 vz=1.388e-16
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+=== timed run rep=1
+backend=openacc n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="NVIDIA RTX 6000 Ada Generation" host=haskell slurm_job_id=28623 git_commit=serial-baseline-v1-8-ga30296608f61 compiler=nvc compiler_version="EDG gcc 14.2 mode" build_flags="-std=c11 -O2 -acc -gpu=cc89,cc120 -Minfo=accel" elapsed_seconds=0.082085841 loop_seconds=0.080988234 seconds_per_step=0.000809882 interactions_per_second=1.233513e+09 force_seconds=0.079747955 communication_seconds=0.000250038 integration_seconds=0.002076307
+=== timed run rep=2
+backend=openacc n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="NVIDIA RTX 6000 Ada Generation" host=haskell slurm_job_id=28623 git_commit=serial-baseline-v1-8-ga30296608f61 compiler=nvc compiler_version="EDG gcc 14.2 mode" build_flags="-std=c11 -O2 -acc -gpu=cc89,cc120 -Minfo=accel" elapsed_seconds=0.079281918 loop_seconds=0.078238070 seconds_per_step=0.000782381 interactions_per_second=1.276872e+09 force_seconds=0.076992809 communication_seconds=0.000222647 integration_seconds=0.002054858
+=== timed run rep=3
+backend=openacc n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=1 nodes=1 gpu_model="NVIDIA RTX 6000 Ada Generation" host=haskell slurm_job_id=28623 git_commit=serial-baseline-v1-8-ga30296608f61 compiler=nvc compiler_version="EDG gcc 14.2 mode" build_flags="-std=c11 -O2 -acc -gpu=cc89,cc120 -Minfo=accel" elapsed_seconds=0.079297081 loop_seconds=0.078245702 seconds_per_step=0.000782457 interactions_per_second=1.276747e+09 force_seconds=0.076993359 communication_seconds=0.000232693 integration_seconds=0.002057955
+JobID           JobName    Elapsed   TotalCPU     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- --------------- ---------- 
+28623        nbody-ope+   00:00:12  00:01.378                    haskell    RUNNING 
+28623.batch       batch   00:00:12   00:00:00                    haskell    RUNNING 
+28623.0      test_open+   00:00:01  00:00.174     10200K         haskell  COMPLETED 
+28623.1      nbody_ope+   00:00:00  00:00.226     12864K         haskell  COMPLETED 
+28623.2      nbody_ser+   00:00:01  00:00.312     12840K         haskell  COMPLETED 
+28623.3      nbody_ope+   00:00:01  00:00.225     10092K         haskell  COMPLETED 
+28623.4      nbody_ope+   00:00:01  00:00.218     12484K         haskell  COMPLETED 
+28623.5      nbody_ope+   00:00:01  00:00.222     12556K         haskell  COMPLETED 

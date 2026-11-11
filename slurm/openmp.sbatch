@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 #SBATCH --job-name=nbody-openmp
 #SBATCH --output=results/logs/openmp_%j.out
 #SBATCH --partition=cpu

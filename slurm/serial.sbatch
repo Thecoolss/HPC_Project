@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 #SBATCH --job-name=nbody-serial
 #SBATCH --output=results/logs/serial_%j.out
 #SBATCH --time=00:10:00

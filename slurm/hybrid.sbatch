@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 #SBATCH --job-name=nbody-hybrid
 #SBATCH --output=results/logs/hybrid_%j.out
 #SBATCH --partition=cpu
@@ -44,7 +44,14 @@ CORES=$((SLURM_NTASKS * SLURM_CPUS_PER_TASK))
 
 # Threads of each rank pinned to physical cores, packed next to each other.
 export OMP_PLACES=cores
-export OMP_PROC_BIND=close
+export 
+OMP_PROC_BIND=close
+
+
+# Open MPI: use only the main 10.205.20.0/24 network between nodes. Each node
+# also has a 10.205.10.0/24 VLAN, and job 28606 failed with TCP connect()
+# errors to 10.205.10.x addresses at 16 ranks across 2 nodes.
+export OMPI_MCA_btl_tcp_if_include="${OMPI_MCA_btl_tcp_if_include:-10.205.20.0/24}"
 
 if [ ! -x build/nbody_hybrid ]; then
     echo "build/nbody_hybrid not found; run 'make' first" >&2
@@ -54,6 +61,7 @@ fi
 sh scripts/job_metadata.sh
 echo "mpi_version=$(mpirun --version 2>/dev/null | head -n 1)"
 echo "mpi_plugin=$MPI_PLUGIN nodes=$NODES cores=$CORES splits_list=$SPLITS"
+echo "mpi_tcp_networks=$OMPI_MCA_btl_tcp_if_include"
 echo "command=./build/nbody_hybrid ${ARGS[*]}"
 
 # Runs one split. Usage: run_split RANKS THREADS [extra program options]

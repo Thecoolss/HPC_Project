@@ -44,9 +44,7 @@ CORES=$((SLURM_NTASKS * SLURM_CPUS_PER_TASK))
 
 # Threads of each rank pinned to physical cores, packed next to each other.
 export OMP_PLACES=cores
-export 
-OMP_PROC_BIND=close
-
+export OMP_PROC_BIND=close
 
 # Open MPI: use only the main 10.205.20.0/24 network between nodes. Each node
 # also has a 10.205.10.0/24 VLAN, and job 28606 failed with TCP connect()

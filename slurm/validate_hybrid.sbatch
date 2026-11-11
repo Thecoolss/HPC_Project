@@ -43,6 +43,13 @@ export OMP_PLACES=cores
 export OMP_PROC_BIND=close
 # Same inter-node network restriction as slurm/hybrid.sbatch (job 28606).
 export OMPI_MCA_btl_tcp_if_include="${OMPI_MCA_btl_tcp_if_include:-10.205.20.0/24}"
+# Open MPI transport: use Open MPI's own ob1 layer with shared memory (vader)
+# inside a node and TCP between nodes, not UCX. With UCX, 16 ranks on 2 nodes
+# segfaulted in libucs on haskell 3/3 times (jobs 28689, 28690); with these
+# settings the same run passed 3/3 (job 28690). Keep them for every hybrid run
+# so all timings use the same transport.
+export OMPI_MCA_pml="${OMPI_MCA_pml:-ob1}"
+export OMPI_MCA_btl="${OMPI_MCA_btl:-self,vader,tcp}"
 
 for exe in build/nbody_serial build/nbody_hybrid; do
     if [ ! -x "$exe" ]; then
@@ -54,6 +61,7 @@ done
 sh scripts/job_metadata.sh
 echo "mpi_version=$(mpirun --version 2>/dev/null | head -n 1)"
 echo "mpi_tcp_networks=$OMPI_MCA_btl_tcp_if_include"
+echo "mpi_pml=$OMPI_MCA_pml mpi_btl=$OMPI_MCA_btl"
 echo "workload: n=$N steps=$STEPS"
 
 SRUN="srun --mpi=$MPI_PLUGIN --hint=nomultithread --cpu-bind=cores"

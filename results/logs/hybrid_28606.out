@@ -1,0 +1,425 @@
+=== job metadata ===
+date=2026-11-11T17:11:00+01:00
+host=fortran
+slurm_job_id=28606
+slurm_job_name=nbody-hybrid
+slurm_partition=cpu
+slurm_nodelist=fortran,haskell
+slurm_ntasks=32
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=close
+omp_places=cores
+git_head=19f3375be0f78c9cb388729e59d227020c1a9ea6
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      55%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+mpi_version=mpirun (Open MPI) 4.1.5
+mpi_plugin=pmix nodes=2 cores=32 splits_list=2x16 4x8 8x4 16x2 32x1
+command=./build/nbody_hybrid --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== check run split=32x1
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+[fortran:3217099] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217099] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217105] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217105] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217106] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217106] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217107] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217107] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217108] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217108] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217109] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217109] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217110] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217110] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217111] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217111] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217100] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217100] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217101] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217101] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217102] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217102] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217103] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217103] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217104] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217104] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217112] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217112] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217113] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217113] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3217114] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3217114] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.681940648 loop_seconds=11.718076134 seconds_per_step=1.171807613 interactions_per_second=8.533739e+09 force_seconds=10.716670266 communication_seconds=2.075785104 integration_seconds=0.000144402 initial_energy=-0.47055129572309962 final_energy=-0.47055129572013732 energy_change=2.9622970743048427e-12 relative_energy_change=-6.2953754483932707e-12 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-6.0053932856809224e-20 momentum_y=-2.4894827715395921e-20 momentum_z=-1.7966362904651761e-20
+=== timed run split=2x16 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.569959818 loop_seconds=11.605559461 seconds_per_step=1.160555946 interactions_per_second=8.616474e+09 force_seconds=11.455996185 communication_seconds=1.809745165 integration_seconds=0.003782418
+=== timed run split=2x16 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.446891790 loop_seconds=11.480571507 seconds_per_step=1.148057151 interactions_per_second=8.710281e+09 force_seconds=11.341253717 communication_seconds=1.739834074 integration_seconds=0.003776468
+=== timed run split=2x16 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.451292911 loop_seconds=11.485375790 seconds_per_step=1.148537579 interactions_per_second=8.706637e+09 force_seconds=11.387473550 communication_seconds=1.739759875 integration_seconds=0.003950003
+=== timed run split=4x8 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.546006883 loop_seconds=11.580279649 seconds_per_step=1.158027965 interactions_per_second=8.635284e+09 force_seconds=11.480772089 communication_seconds=1.836032646 integration_seconds=0.001864539
+=== timed run split=4x8 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.681736889 loop_seconds=11.703774706 seconds_per_step=1.170377471 interactions_per_second=8.544167e+09 force_seconds=11.594851974 communication_seconds=1.925618595 integration_seconds=0.001928669
+=== timed run split=4x8 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.586204896 loop_seconds=11.617488835 seconds_per_step=1.161748884 interactions_per_second=8.607626e+09 force_seconds=11.523843894 communication_seconds=1.861732327 integration_seconds=0.001867278
+=== timed run split=8x4 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=13.523976786 loop_seconds=12.554533761 seconds_per_step=1.255453376 interactions_per_second=7.965170e+09 force_seconds=11.592826062 communication_seconds=2.829213623 integration_seconds=0.000943151
+=== timed run split=8x4 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=13.451490404 loop_seconds=12.479666223 seconds_per_step=1.247966622 interactions_per_second=8.012955e+09 force_seconds=11.532405239 communication_seconds=2.798774984 integration_seconds=0.000962736
+=== timed run split=8x4 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28606 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=13.503153974 loop_seconds=12.529533067 seconds_per_step=1.252953307 interactions_per_second=7.981064e+09 force_seconds=11.495162605 communication_seconds=2.817746143 integration_seconds=0.000940809
+=== timed run split=16x2 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+[haskell:2709998:0:2709998] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+==== backtrace (tid:2709998) ====
+ 0  /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/software/UCX/1.14.1-GCCcore-12.3.0/lib64/libucs.so.0(ucs_handle_error+0x294) [0x77ade2445414]
+ 1  /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/software/UCX/1.14.1-GCCcore-12.3.0/lib64/libucs.so.0(+0x285e4) [0x77ade24455e4]
+ 2  /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/software/UCX/1.14.1-GCCcore-12.3.0/lib64/libucs.so.0(+0x2878a) [0x77ade244578a]
+=================================
+[haskell:2709998] *** Process received signal ***
+[haskell:2709998] Signal: Segmentation fault (11)
+[haskell:2709998] Signal code:  (-6)
+[haskell:2709998] Failing at address: 0xf4309002959ee
+[haskell:2709998] [ 0] /cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64/lib64/libc.so.6(+0x38560)[0x77ade4a98560]
+[haskell:2709998] *** End of error message ***
+[haskell:2709999:0:2709999] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+==== backtrace (tid:2709999) ====
+ 0  /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/software/UCX/1.14.1-GCCcore-12.3.0/lib64/libucs.so.0(ucs_handle_error+0x294) [0x7f04100cd414]
+ 1  /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/software/UCX/1.14.1-GCCcore-12.3.0/lib64/libucs.so.0(+0x285e4) [0x7f04100cd5e4]
+ 2  /cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/software/UCX/1.14.1-GCCcore-12.3.0/lib64/libucs.so.0(+0x2878a) [0x7f04100cd78a]
+=================================
+[haskell:2709999] *** Process received signal ***
+[haskell:2709999] Signal: Segmentation fault (11)
+[haskell:2709999] Signal code:  (-6)
+[haskell:2709999] Failing at address: 0xf4309002959ef
+[haskell:2709999] [ 0] /cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64/lib64/libc.so.6(+0x38560)[0x7f0412724560]
+[haskell:2709999] *** End of error message ***
+--------------------------------------------------------------------------
+A system call failed during sm BTL initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  System call: open(2)
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during sm BTL initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  System call: open(2)
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during sm BTL initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  System call: open(2)
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during sm BTL initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  System call: open(2)
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during sm BTL initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  System call: open(2)
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during sm BTL initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  System call: open(2)
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  haskell
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  haskell
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  haskell
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  haskell
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  haskell
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  haskell
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: Open MPI failed to TCP connect to a peer MPI process.  This
+should not happen.
+
+Your Open MPI job may now hang or fail.
+
+  Local host: haskell
+  PID:        2709996
+  Message:    connect() to 10.205.10.23:1039 failed
+  Error:      Operation now in progress (115)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: Open MPI failed to TCP connect to a peer MPI process.  This
+should not happen.
+
+Your Open MPI job may now hang or fail.
+
+  Local host: haskell
+  PID:        2709997
+  Message:    connect() to 10.205.10.23:1028 failed
+  Error:      Operation now in progress (115)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: Open MPI failed to TCP connect to a peer MPI process.  This
+should not happen.
+
+Your Open MPI job may now hang or fail.
+
+  Local host: haskell
+  PID:        2710002
+  Message:    connect() to 10.205.10.23:1039 failed
+  Error:      Operation now in progress (115)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: Open MPI failed to TCP connect to a peer MPI process.  This
+should not happen.
+
+Your Open MPI job may now hang or fail.
+
+  Local host: haskell
+  PID:        2710003
+  Message:    connect() to 10.205.10.23:1028 failed
+  Error:      Operation now in progress (115)
+--------------------------------------------------------------------------
+srun: error: haskell: tasks 10-11: Segmentation fault
+slurmstepd-haskell: error:  mpi/pmix_v5: _errhandler: haskell [1]: pmixp_client_v2.c:211: Error handler invoked: status = -61, source = [slurm.pmix.28606.10:11]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd-fortran: error: *** STEP 28606.10 ON fortran CANCELLED AT 2026-11-11T17:14:29 ***
+srun: error: fortran: tasks 0-7: Killed
+srun: error: haskell: tasks 8-9,12-15: Killed

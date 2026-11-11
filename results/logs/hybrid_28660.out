@@ -1,0 +1,480 @@
+declare -x ACLOCAL_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/share/aclocal"
+declare -x APPTAINER_CACHEDIR="/scratch/hpcb14/.apptainer-cache"
+declare -x APPTAINER_TMPDIR="/scratch/hpcb14/.apptainer-tmp"
+declare -x BASH_ENV="/usr/share/lmod/lmod/init/bash"
+declare -x CLUSTER="scitech"
+declare -x CMAKE_LIBRARY_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/lib64"
+declare -x CMAKE_PREFIX_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0"
+declare -x CPATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/include/libxml2:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/include:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/include"
+declare -x CUDA_DEVICE_ORDER="PCI_BUS_ID"
+declare -x DATA="/data"
+declare -x DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000201/bus"
+declare -x EBDEVELGCC="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCC/12.3.0/easybuild/GCC-12.3.0-easybuild-devel"
+declare -x EBDEVELGCCCORE="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/easybuild/GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELHWLOC="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/easybuild/hwloc-2.9.1-GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELLIBEVENT="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/easybuild/libevent-2.1.12-GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELLIBFABRIC="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/easybuild/libfabric-1.18.0-GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELLIBPCIACCESS="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0/easybuild/libpciaccess-0.17-GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELLIBXML2="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/easybuild/libxml2-2.11.4-GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELNUMACTL="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/easybuild/numactl-2.0.16-GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELOPENMPI="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/easybuild/OpenMPI-4.1.5-GCC-12.3.0-easybuild-devel"
+declare -x EBDEVELOPENSSL="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/easybuild/OpenSSL-1.1-easybuild-devel"
+declare -x EBDEVELPMIX="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/easybuild/PMIx-4.2.4-GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELUCC="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0/easybuild/UCC-1.2.0-GCCcore-12.3.0-easybuild-devel"
+declare -x EBDEVELUCX="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/easybuild/UCX-1.14.1-GCCcore-12.3.0-easybuild-devel"
+declare -x EBROOTGCC="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0"
+declare -x EBROOTGCCCORE="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0"
+declare -x EBROOTHWLOC="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0"
+declare -x EBROOTLIBEVENT="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0"
+declare -x EBROOTLIBFABRIC="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0"
+declare -x EBROOTLIBPCIACCESS="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0"
+declare -x EBROOTLIBXML2="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0"
+declare -x EBROOTNUMACTL="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0"
+declare -x EBROOTOPENMPI="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0"
+declare -x EBROOTOPENSSL="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1"
+declare -x EBROOTPMIX="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0"
+declare -x EBROOTUCC="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0"
+declare -x EBROOTUCX="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0"
+declare -x EBVERSIONGCC="12.3.0"
+declare -x EBVERSIONGCCCORE="12.3.0"
+declare -x EBVERSIONHWLOC="2.9.1"
+declare -x EBVERSIONLIBEVENT="2.1.12"
+declare -x EBVERSIONLIBFABRIC="1.18.0"
+declare -x EBVERSIONLIBPCIACCESS="0.17"
+declare -x EBVERSIONLIBXML2="2.11.4"
+declare -x EBVERSIONNUMACTL="2.0.16"
+declare -x EBVERSIONOPENMPI="4.1.5"
+declare -x EBVERSIONOPENSSL="1.1"
+declare -x EBVERSIONPMIX="4.2.4"
+declare -x EBVERSIONUCC="1.2.0"
+declare -x EBVERSIONUCX="1.14.1"
+declare -x EESSI_ACCEL_SUBDIR="accel/nvidia/cc120"
+declare -x EESSI_CPU_FAMILY="x86_64"
+declare -x EESSI_CVMFS_REPO="/cvmfs/software.eessi.io"
+declare -x EESSI_EPREFIX="/cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64"
+declare -x EESSI_INIT_PREFIX="/cvmfs/software.eessi.io/versions/2023.06/init"
+declare -x EESSI_MODULEPATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all"
+declare -x EESSI_OS_TYPE="linux"
+declare -x EESSI_PREFIX="/cvmfs/software.eessi.io/versions/2023.06"
+declare -x EESSI_SITE_MODULEPATH="/cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen4/modules/all"
+declare -x EESSI_SITE_SOFTWARE_PATH="/cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen4"
+declare -x EESSI_SOFTWARE_LAYER_VERSION_SUFFIX=""
+declare -x EESSI_SOFTWARE_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4"
+declare -x EESSI_SOFTWARE_SUBDIR="x86_64/amd/zen4"
+declare -x EESSI_USE_ARCHDETECT="1"
+declare -x EESSI_USE_ARCHSPEC="0"
+declare -x EESSI_VERSION="2023.06"
+declare -x EESSI_VERSION_DEFAULT="2023.06"
+declare -x ENVIRONMENT="BATCH"
+declare -x EPREFIX="/cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64"
+declare -x FI_PROVIDER="tcp"
+declare -x FPATH="/usr/share/lmod/lmod/init/ksh_funcs:/cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64/usr/share/Lmod/init/ksh_funcs"
+declare -x HOME="/home/hpcb14"
+declare -x HOSTNAME="fortran"
+declare -x HYDRA_BOOTSTRAP="slurm"
+declare -x HYDRA_LAUNCHER_EXTRA_ARGS="--external-launcher"
+declare -x I_MPI_HYDRA_BOOTSTRAP="slurm"
+declare -x I_MPI_HYDRA_BOOTSTRAP_EXEC_EXTRA_ARGS="--external-launcher"
+declare -x LANG="en_US.UTF-8"
+declare -x LANGUAGE="en_US:en"
+declare -x LC_CTYPE="UTF-8"
+declare -x LIBRARY_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/lib:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/lib"
+declare -x LMOD_CMD="/usr/share/lmod/lmod/libexec/lmod"
+declare -x LMOD_CONFIG_DIR="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/.lmod"
+declare -x LMOD_DIR="/usr/share/lmod/lmod/libexec"
+declare -x LMOD_PACKAGE_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/.lmod"
+declare -x LMOD_PKG="/usr/share/lmod/lmod"
+declare -x LMOD_RC="/cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen4/.lmod/lmodrc.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/.lmod/lmodrc.lua"
+declare -x LMOD_ROOT="/usr/share/lmod"
+declare -x LMOD_SETTARG_FULL_SUPPORT="no"
+declare -x LMOD_VERSION="8.7.60"
+declare -x LMOD_sys="Linux"
+declare -x LOADEDMODULES="GCCcore/12.3.0:GCC/12.3.0:numactl/2.0.16-GCCcore-12.3.0:libxml2/2.11.4-GCCcore-12.3.0:libpciaccess/0.17-GCCcore-12.3.0:hwloc/2.9.1-GCCcore-12.3.0:OpenSSL/1.1:libevent/2.1.12-GCCcore-12.3.0:UCX/1.14.1-GCCcore-12.3.0:libfabric/1.18.0-GCCcore-12.3.0:PMIx/4.2.4-GCCcore-12.3.0:UCC/1.2.0-GCCcore-12.3.0:OpenMPI/4.1.5-GCC-12.3.0"
+declare -x LOGNAME="hpcb14"
+declare -x LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.cfg=00;32:*.conf=00;32:*.diff=00;32:*.doc=00;32:*.ini=00;32:*.log=00;32:*.patch=00;32:*.pdf=00;32:*.ps=00;32:*.tex=00;32:*.txt=00;32:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:"
+declare -x MAIL="/var/mail/hpcb14"
+declare -x MANPATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/share/man:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/share/man:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/share/man:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/share/man:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/share/man:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/share/man:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/share/man:/usr/share/lmod/lmod/share/man::"
+declare -x MODULEPATH="/data/software/modules:/cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen4/modules/all:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all:/cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen2/modules/all:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/modules/all:/etc/lmod/modules:/usr/share/lmod/lmod/modulefiles"
+declare -x MODULEPATH_ROOT="/usr/share/modulefiles"
+declare -x MODULESHOME="/usr/share/lmod/lmod"
+declare -x MOTD_SHOWN="pam"
+declare -x OLDPWD="/home/hpcb14/HPC_Project"
+declare -x OMPI_MCA_hwloc_base_use_hwthreads_as_cpus="1"
+declare -x OMPI_MCA_plm_slurm_args="--external-launcher"
+declare -x OMP_PLACES="cores"
+declare -x PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/sbin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/bin:/cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64/usr/bin:/cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+declare -x PKG_CONFIG_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/lib/pkgconfig:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/lib/pkgconfig"
+declare -x PMIX_MCA_psec="native"
+declare -x PRTE_MCA_plm_slurm_args="--external-launcher"
+declare -x PS1=""
+declare -x PWD="/home/hpcb14/HPC_Project"
+declare -x SCRATCH="/scratch"
+declare -x SCRATCH_USER="/scratch/hpcb14"
+declare -x SHELL="/bin/bash"
+declare -x SHLVL="2"
+declare -x SLURMD_NODENAME="fortran"
+declare -x SLURM_CLUSTER_NAME="scitech"
+declare -x SLURM_CONF="/etc/slurm/slurm.conf"
+declare -x SLURM_CPUS_ON_NODE="16"
+declare -x SLURM_CPUS_PER_TASK="1"
+declare -x SLURM_EXPORT_ENV="ALL,SPLITS=2x16 4x8 8x4 16x2 32x1"
+declare -x SLURM_GET_USER_ENV="1"
+declare -x SLURM_GTIDS="0"
+declare -x SLURM_HINT="nomultithread"
+declare -x SLURM_JOBID="28660"
+declare -x SLURM_JOB_ACCOUNT="hpcclass"
+declare -x SLURM_JOB_CPUS_PER_NODE="16(x2)"
+declare -x SLURM_JOB_END_TIME="1794423315"
+declare -x SLURM_JOB_GID="1000000"
+declare -x SLURM_JOB_ID="28660"
+declare -x SLURM_JOB_NAME="nbody-hybrid"
+declare -x SLURM_JOB_NODELIST="fortran,julia"
+declare -x SLURM_JOB_NUM_NODES="2"
+declare -x SLURM_JOB_PARTITION="cpu"
+declare -x SLURM_JOB_QOS="student"
+declare -x SLURM_JOB_START_TIME="1794421515"
+declare -x SLURM_JOB_UID="1000201"
+declare -x SLURM_JOB_USER="hpcb14"
+declare -x SLURM_LOCALID="0"
+declare -x SLURM_MEM_PER_NODE="8192"
+declare -x SLURM_NNODES="2"
+declare -x SLURM_NODEID="0"
+declare -x SLURM_NODELIST="fortran,julia"
+declare -x SLURM_NPROCS="32"
+declare -x SLURM_NTASKS="32"
+declare -x SLURM_NTASKS_PER_NODE="16"
+declare -x SLURM_OOM_KILL_STEP="0"
+declare -x SLURM_PRIO_PROCESS="0"
+declare -x SLURM_PROCID="0"
+declare -x SLURM_SUBMIT_DIR="/home/hpcb14/HPC_Project"
+declare -x SLURM_SUBMIT_HOST="rust"
+declare -x SLURM_TASKS_PER_NODE="16(x2)"
+declare -x SLURM_TASK_PID="3256770"
+declare -x SLURM_THREADS_PER_CORE="1"
+declare -x SLURM_TOPOLOGY_ADDR="fortran"
+declare -x SLURM_TOPOLOGY_ADDR_PATTERN="node"
+declare -x SLURM_TRES_PER_TASK="cpu=1"
+declare -x SPLITS="2x16 4x8 8x4 16x2 32x1"
+declare -x SQUEUE_FORMAT="%.8i %.9P %.30j %.8u %.2t %.10M %.6D %.4C %.12b %R"
+declare -x SSH_CLIENT="10.205.10.2 57486 22"
+declare -x SSH_CONNECTION="10.205.10.2 57486 10.205.20.10 22"
+declare -x SSH_TTY="/dev/pts/6"
+declare -x TERM="xterm-256color"
+declare -x TMPDIR="/var/tmp"
+declare -x UCX_TLS="tcp,sm,self"
+declare -x USER="hpcb14"
+declare -x XDG_DATA_DIRS="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/share:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/share:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/share:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/share:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/share:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/share:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/share:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/share"
+declare -x XDG_RUNTIME_DIR="/run/user/1000201"
+declare -x XDG_SESSION_CLASS="user"
+declare -x XDG_SESSION_ID="9338"
+declare -x XDG_SESSION_TYPE="tty"
+declare -x _LMFILES_="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/GCCcore/12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/GCC/12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/numactl/2.0.16-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/libxml2/2.11.4-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/libpciaccess/0.17-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/hwloc/2.9.1-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/OpenSSL/1.1.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/libevent/2.1.12-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/UCX/1.14.1-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/libfabric/1.18.0-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/PMIx/4.2.4-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/UCC/1.2.0-GCCcore-12.3.0.lua:/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all/OpenMPI/4.1.5-GCC-12.3.0.lua"
+declare -x _ModuleTable001_="X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IGZhbHNlLApjX3Nob3J0VGltZSA9IGZhbHNlLApkZXB0aFQgPSB7fSwKZmFtaWx5ID0ge30sCm1UID0gewpHQ0MgPSB7CmZuID0gIi9jdm1mcy9zb2Z0d2FyZS5lZXNzaS5pby92ZXJzaW9ucy8yMDIzLjA2L3NvZnR3YXJlL2xpbnV4L3g4Nl82NC9hbWQvemVuNC9tb2R1bGVzL2FsbC9HQ0MvMTIuMy4wLmx1YSIsCmZ1bGxOYW1lID0gIkdDQy8xMi4zLjAiLApsb2FkT3JkZXIgPSAyLApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMSwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gIkdDQy8xMi4zLjAiLAp3ViA9ICIwMDAwMDAwMTIuMDAwMDAwMDAzLip6ZmluYWwiLAp9LApHQ0Njb3Jl"
+declare -x _ModuleTable002_="ID0gewpmbiA9ICIvY3ZtZnMvc29mdHdhcmUuZWVzc2kuaW8vdmVyc2lvbnMvMjAyMy4wNi9zb2Z0d2FyZS9saW51eC94ODZfNjQvYW1kL3plbjQvbW9kdWxlcy9hbGwvR0NDY29yZS8xMi4zLjAubHVhIiwKZnVsbE5hbWUgPSAiR0NDY29yZS8xMi4zLjAiLApsb2FkT3JkZXIgPSAxLApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMiwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gIkdDQ2NvcmUvMTIuMy4wIiwKd1YgPSAiMDAwMDAwMDEyLjAwMDAwMDAwMy4qemZpbmFsIiwKfSwKT3Blbk1QSSA9IHsKZm4gPSAiL2N2bWZzL3NvZnR3YXJlLmVlc3NpLmlvL3ZlcnNpb25zLzIwMjMuMDYvc29mdHdhcmUvbGludXgveDg2XzY0L2FtZC96ZW40L21vZHVsZXMvYWxsL09wZW5N"
+declare -x _ModuleTable003_="UEkvNC4xLjUtR0NDLTEyLjMuMC5sdWEiLApmdWxsTmFtZSA9ICJPcGVuTVBJLzQuMS41LUdDQy0xMi4zLjAiLApsb2FkT3JkZXIgPSAxMywKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDAsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJPcGVuTVBJLzQuMS41LUdDQy0xMi4zLjAiLAp3ViA9ICIwMDAwMDAwMDQuMDAwMDAwMDAxLjAwMDAwMDAwNS4qZ2NjLip6ZmluYWwtLjAwMDAwMDAxMi4wMDAwMDAwMDMuKnpmaW5hbCIsCn0sCk9wZW5TU0wgPSB7CmZuID0gIi9jdm1mcy9zb2Z0d2FyZS5lZXNzaS5pby92ZXJzaW9ucy8yMDIzLjA2L3NvZnR3YXJlL2xpbnV4L3g4Nl82NC9hbWQvemVuNC9tb2R1bGVzL2FsbC9PcGVuU1NMLzEuMS5sdWEiLApmdWxsTmFtZSA9ICJP"
+declare -x _ModuleTable004_="cGVuU1NMLzEuMSIsCmxvYWRPcmRlciA9IDcsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAyLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAiT3BlblNTTC8xLjEiLAp3ViA9ICIwMDAwMDAwMDEuMDAwMDAwMDAxLip6ZmluYWwiLAp9LApQTUl4ID0gewpmbiA9ICIvY3ZtZnMvc29mdHdhcmUuZWVzc2kuaW8vdmVyc2lvbnMvMjAyMy4wNi9zb2Z0d2FyZS9saW51eC94ODZfNjQvYW1kL3plbjQvbW9kdWxlcy9hbGwvUE1JeC80LjIuNC1HQ0Njb3JlLTEyLjMuMC5sdWEiLApmdWxsTmFtZSA9ICJQTUl4LzQuMi40LUdDQ2NvcmUtMTIuMy4wIiwKbG9hZE9yZGVyID0gMTEsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAxLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUg"
+declare -x _ModuleTable005_="PSAiUE1JeC80LjIuNC1HQ0Njb3JlLTEyLjMuMCIsCndWID0gIjAwMDAwMDAwNC4wMDAwMDAwMDIuMDAwMDAwMDA0LipnY2Njb3JlLip6ZmluYWwtLjAwMDAwMDAxMi4wMDAwMDAwMDMuKnpmaW5hbCIsCn0sClVDQyA9IHsKZm4gPSAiL2N2bWZzL3NvZnR3YXJlLmVlc3NpLmlvL3ZlcnNpb25zLzIwMjMuMDYvc29mdHdhcmUvbGludXgveDg2XzY0L2FtZC96ZW40L21vZHVsZXMvYWxsL1VDQy8xLjIuMC1HQ0Njb3JlLTEyLjMuMC5sdWEiLApmdWxsTmFtZSA9ICJVQ0MvMS4yLjAtR0NDY29yZS0xMi4zLjAiLApsb2FkT3JkZXIgPSAxMiwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJVQ0MvMS4yLjAtR0NDY29yZS0xMi4z"
+declare -x _ModuleTable006_="LjAiLAp3ViA9ICIwMDAwMDAwMDEuMDAwMDAwMDAyLipnY2Njb3JlLip6ZmluYWwtLjAwMDAwMDAxMi4wMDAwMDAwMDMuKnpmaW5hbCIsCn0sClVDWCA9IHsKZm4gPSAiL2N2bWZzL3NvZnR3YXJlLmVlc3NpLmlvL3ZlcnNpb25zLzIwMjMuMDYvc29mdHdhcmUvbGludXgveDg2XzY0L2FtZC96ZW40L21vZHVsZXMvYWxsL1VDWC8xLjE0LjEtR0NDY29yZS0xMi4zLjAubHVhIiwKZnVsbE5hbWUgPSAiVUNYLzEuMTQuMS1HQ0Njb3JlLTEyLjMuMCIsCmxvYWRPcmRlciA9IDksCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAxLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAiVUNYLzEuMTQuMS1HQ0Njb3JlLTEyLjMuMCIsCndWID0gIjAwMDAwMDAwMS4wMDAwMDAwMTQuMDAw"
+declare -x _ModuleTable007_="MDAwMDAxLipnY2Njb3JlLip6ZmluYWwtLjAwMDAwMDAxMi4wMDAwMDAwMDMuKnpmaW5hbCIsCn0sCmh3bG9jID0gewpmbiA9ICIvY3ZtZnMvc29mdHdhcmUuZWVzc2kuaW8vdmVyc2lvbnMvMjAyMy4wNi9zb2Z0d2FyZS9saW51eC94ODZfNjQvYW1kL3plbjQvbW9kdWxlcy9hbGwvaHdsb2MvMi45LjEtR0NDY29yZS0xMi4zLjAubHVhIiwKZnVsbE5hbWUgPSAiaHdsb2MvMi45LjEtR0NDY29yZS0xMi4zLjAiLApsb2FkT3JkZXIgPSA2LApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMSwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gImh3bG9jLzIuOS4xLUdDQ2NvcmUtMTIuMy4wIiwKd1YgPSAiMDAwMDAwMDAyLjAwMDAwMDAwOS4wMDAwMDAwMDEuKmdjY2NvcmUuKnpm"
+declare -x _ModuleTable008_="aW5hbC0uMDAwMDAwMDEyLjAwMDAwMDAwMy4qemZpbmFsIiwKfSwKbGliZXZlbnQgPSB7CmZuID0gIi9jdm1mcy9zb2Z0d2FyZS5lZXNzaS5pby92ZXJzaW9ucy8yMDIzLjA2L3NvZnR3YXJlL2xpbnV4L3g4Nl82NC9hbWQvemVuNC9tb2R1bGVzL2FsbC9saWJldmVudC8yLjEuMTItR0NDY29yZS0xMi4zLjAubHVhIiwKZnVsbE5hbWUgPSAibGliZXZlbnQvMi4xLjEyLUdDQ2NvcmUtMTIuMy4wIiwKbG9hZE9yZGVyID0gOCwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJsaWJldmVudC8yLjEuMTItR0NDY29yZS0xMi4zLjAiLAp3ViA9ICIwMDAwMDAwMDIuMDAwMDAwMDAxLjAwMDAwMDAxMi4qZ2NjY29yZS4qemZpbmFs"
+declare -x _ModuleTable009_="LS4wMDAwMDAwMTIuMDAwMDAwMDAzLip6ZmluYWwiLAp9LApsaWJmYWJyaWMgPSB7CmZuID0gIi9jdm1mcy9zb2Z0d2FyZS5lZXNzaS5pby92ZXJzaW9ucy8yMDIzLjA2L3NvZnR3YXJlL2xpbnV4L3g4Nl82NC9hbWQvemVuNC9tb2R1bGVzL2FsbC9saWJmYWJyaWMvMS4xOC4wLUdDQ2NvcmUtMTIuMy4wLmx1YSIsCmZ1bGxOYW1lID0gImxpYmZhYnJpYy8xLjE4LjAtR0NDY29yZS0xMi4zLjAiLApsb2FkT3JkZXIgPSAxMCwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJsaWJmYWJyaWMvMS4xOC4wLUdDQ2NvcmUtMTIuMy4wIiwKd1YgPSAiMDAwMDAwMDAxLjAwMDAwMDAxOC4qZ2NjY29yZS4qemZpbmFsLS4wMDAwMDAw"
+declare -x _ModuleTable010_="MTIuMDAwMDAwMDAzLip6ZmluYWwiLAp9LApsaWJwY2lhY2Nlc3MgPSB7CmZuID0gIi9jdm1mcy9zb2Z0d2FyZS5lZXNzaS5pby92ZXJzaW9ucy8yMDIzLjA2L3NvZnR3YXJlL2xpbnV4L3g4Nl82NC9hbWQvemVuNC9tb2R1bGVzL2FsbC9saWJwY2lhY2Nlc3MvMC4xNy1HQ0Njb3JlLTEyLjMuMC5sdWEiLApmdWxsTmFtZSA9ICJsaWJwY2lhY2Nlc3MvMC4xNy1HQ0Njb3JlLTEyLjMuMCIsCmxvYWRPcmRlciA9IDUsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAyLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAibGlicGNpYWNjZXNzLzAuMTctR0NDY29yZS0xMi4zLjAiLAp3ViA9ICIwMDAwMDAwMDAuMDAwMDAwMDE3LipnY2Njb3JlLip6ZmluYWwtLjAwMDAwMDAxMi4w"
+declare -x _ModuleTable011_="MDAwMDAwMDMuKnpmaW5hbCIsCn0sCmxpYnhtbDIgPSB7CmZuID0gIi9jdm1mcy9zb2Z0d2FyZS5lZXNzaS5pby92ZXJzaW9ucy8yMDIzLjA2L3NvZnR3YXJlL2xpbnV4L3g4Nl82NC9hbWQvemVuNC9tb2R1bGVzL2FsbC9saWJ4bWwyLzIuMTEuNC1HQ0Njb3JlLTEyLjMuMC5sdWEiLApmdWxsTmFtZSA9ICJsaWJ4bWwyLzIuMTEuNC1HQ0Njb3JlLTEyLjMuMCIsCmxvYWRPcmRlciA9IDQsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAyLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAibGlieG1sMi8yLjExLjQtR0NDY29yZS0xMi4zLjAiLAp3ViA9ICIwMDAwMDAwMDIuMDAwMDAwMDExLjAwMDAwMDAwNC4qZ2NjY29yZS4qemZpbmFsLS4wMDAwMDAwMTIuMDAwMDAwMDAz"
+declare -x _ModuleTable012_="Lip6ZmluYWwiLAp9LApudW1hY3RsID0gewpmbiA9ICIvY3ZtZnMvc29mdHdhcmUuZWVzc2kuaW8vdmVyc2lvbnMvMjAyMy4wNi9zb2Z0d2FyZS9saW51eC94ODZfNjQvYW1kL3plbjQvbW9kdWxlcy9hbGwvbnVtYWN0bC8yLjAuMTYtR0NDY29yZS0xMi4zLjAubHVhIiwKZnVsbE5hbWUgPSAibnVtYWN0bC8yLjAuMTYtR0NDY29yZS0xMi4zLjAiLApsb2FkT3JkZXIgPSAzLApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMiwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gIm51bWFjdGwvMi4wLjE2LUdDQ2NvcmUtMTIuMy4wIiwKd1YgPSAiMDAwMDAwMDAyLjAwMDAwMDAwMC4wMDAwMDAwMTYuKmdjY2NvcmUuKnpmaW5hbC0uMDAwMDAwMDEyLjAwMDAwMDAwMy4qemZpbmFs"
+declare -x _ModuleTable013_="IiwKfSwKfSwKbXBhdGhBID0gewoiL2RhdGEvc29mdHdhcmUvbW9kdWxlcyIKLCAiL2N2bWZzL3NvZnR3YXJlLmVlc3NpLmlvL2hvc3RfaW5qZWN0aW9ucy8yMDIzLjA2L3NvZnR3YXJlL2xpbnV4L3g4Nl82NC9hbWQvemVuNC9tb2R1bGVzL2FsbCIKLCAiL2N2bWZzL3NvZnR3YXJlLmVlc3NpLmlvL3ZlcnNpb25zLzIwMjMuMDYvc29mdHdhcmUvbGludXgveDg2XzY0L2FtZC96ZW40L21vZHVsZXMvYWxsIgosICIvY3ZtZnMvc29mdHdhcmUuZWVzc2kuaW8vaG9zdF9pbmplY3Rpb25zLzIwMjMuMDYvc29mdHdhcmUvbGludXgveDg2XzY0L2FtZC96ZW4yL21vZHVsZXMvYWxsIgosICIvY3ZtZnMvc29mdHdhcmUuZWVzc2kuaW8vdmVyc2lvbnMvMjAyMy4wNi9zb2Z0d2FyZS9saW51"
+declare -x _ModuleTable014_="eC94ODZfNjQvYW1kL3plbjIvbW9kdWxlcy9hbGwiCiwgIi9ldGMvbG1vZC9tb2R1bGVzIiwgIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzIiwKfSwKc3lzdGVtQmFzZU1QQVRIID0gIi9ldGMvbG1vZC9tb2R1bGVzOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzOi9kYXRhL3NvZnR3YXJlL21vZHVsZXMiLAp9Cg=="
+declare -x _ModuleTable_Sz_="14"
+declare -x __LMOD_REF_COUNT_ACLOCAL_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/share/aclocal:1"
+declare -x __LMOD_REF_COUNT_CMAKE_LIBRARY_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/lib64:1"
+declare -x __LMOD_REF_COUNT_CMAKE_PREFIX_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0:1"
+declare -x __LMOD_REF_COUNT_CPATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/include/libxml2:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/include:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/include:1"
+declare -x __LMOD_REF_COUNT_LIBRARY_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/lib:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/lib:1"
+declare -x __LMOD_REF_COUNT_MANPATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/share/man:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/share/man:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/share/man:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/share/man:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/share/man:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/share/man:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/share/man:1;/usr/share/lmod/lmod/share/man:1;:1"
+declare -x __LMOD_REF_COUNT_MODULEPATH="/data/software/modules:3;/cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen4/modules/all:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/modules/all:1;/cvmfs/software.eessi.io/host_injections/2023.06/software/linux/x86_64/amd/zen2/modules/all:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/modules/all:1;/etc/lmod/modules:1;/usr/share/lmod/lmod/modulefiles:1"
+declare -x __LMOD_REF_COUNT_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCC/1.2.0-GCCcore-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/sbin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/bin:1;/cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64/usr/bin:1;/cvmfs/software.eessi.io/versions/2023.06/compat/linux/x86_64/bin:1;/usr/local/bin:1;/usr/bin:1;/bin:1;/usr/local/games:1;/usr/games:1"
+declare -x __LMOD_REF_COUNT_PKG_CONFIG_PATH="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libevent/2.1.12-GCCcore-12.3.0/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenSSL/1.1/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libpciaccess/0.17-GCCcore-12.3.0/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/lib/pkgconfig:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/lib/pkgconfig:1"
+declare -x __LMOD_REF_COUNT_XDG_DATA_DIRS="/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/OpenMPI/4.1.5-GCC-12.3.0/share:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/PMIx/4.2.4-GCCcore-12.3.0/share:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libfabric/1.18.0-GCCcore-12.3.0/share:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/UCX/1.14.1-GCCcore-12.3.0/share:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/hwloc/2.9.1-GCCcore-12.3.0/share:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/libxml2/2.11.4-GCCcore-12.3.0/share:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/numactl/2.0.16-GCCcore-12.3.0/share:1;/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen4/software/GCCcore/12.3.0/share:1"
+declare -x __LMOD_SET_FPATH="1"
+=== job metadata ===
+date=2026-11-11T19:25:18+01:00
+host=fortran
+slurm_job_id=28660
+slurm_job_name=nbody-hybrid
+slurm_partition=cpu
+slurm_nodelist=fortran,julia
+slurm_ntasks=32
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=unset
+omp_places=cores
+git_head=5a303055ec01ca449027c066dab4a74e54a4f509
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      53%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+mpi_version=mpirun (Open MPI) 4.1.5
+mpi_plugin=pmix nodes=2 cores=32 splits_list=2x16 4x8 8x4 16x2 32x1
+mpi_tcp_networks=10.205.20.0/24
+command=./build/nbody_hybrid --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== check run split=32x1
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: open(2) 
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+[fortran:3256917] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256917] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256918] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256918] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256903] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256903] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256904] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256904] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256905] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256905] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256906] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256906] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256907] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256907] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256908] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256908] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256909] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256909] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256910] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256910] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256911] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256911] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256912] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256912] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256913] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256913] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256914] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256914] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256915] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256915] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[fortran:3256916] 1 more process has sent help message help-opal-shmem-mmap.txt / sys call fail
+[fortran:3256916] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.941125186 loop_seconds=10.859917778 seconds_per_step=1.085991778 interactions_per_second=9.208081e+09 force_seconds=11.919258533 communication_seconds=1.242380347 integration_seconds=0.000176061 initial_energy=-0.47055129572309962 final_energy=-0.47055129572013732 energy_change=2.9622970743048427e-12 relative_energy_change=-6.2953754483932707e-12 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-6.0053932856809224e-20 momentum_y=-2.4894827715395921e-20 momentum_z=-1.7966362904651761e-20
+=== timed run split=2x16 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.526871770 loop_seconds=11.449762407 seconds_per_step=1.144976241 interactions_per_second=8.733718e+09 force_seconds=12.506250995 communication_seconds=0.906360750 integration_seconds=0.003839470
+=== timed run split=2x16 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.920269090 loop_seconds=10.921853479 seconds_per_step=1.092185348 interactions_per_second=9.155864e+09 force_seconds=11.898584897 communication_seconds=0.455651202 integration_seconds=0.004148247
+=== timed run split=2x16 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.912217599 loop_seconds=10.924926274 seconds_per_step=1.092492627 interactions_per_second=9.153288e+09 force_seconds=11.890301498 communication_seconds=0.380965370 integration_seconds=0.004039964
+=== timed run split=4x8 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.617591705 loop_seconds=11.543584560 seconds_per_step=1.154358456 interactions_per_second=8.662734e+09 force_seconds=12.556314010 communication_seconds=0.977611017 integration_seconds=0.001919877
+=== timed run split=4x8 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.709020584 loop_seconds=11.694187357 seconds_per_step=1.169418736 interactions_per_second=8.551171e+09 force_seconds=12.527224223 communication_seconds=1.412132617 integration_seconds=0.001885898
+=== timed run split=4x8 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.871386366 loop_seconds=11.795610102 seconds_per_step=1.179561010 interactions_per_second=8.477645e+09 force_seconds=12.837650951 communication_seconds=1.269146683 integration_seconds=0.001830619
+=== timed run split=8x4 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.705549457 loop_seconds=11.634939505 seconds_per_step=1.163493950 interactions_per_second=8.594716e+09 force_seconds=12.547261557 communication_seconds=1.275951498 integration_seconds=0.001016092
+=== timed run split=8x4 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.893221316 loop_seconds=11.814966237 seconds_per_step=1.181496624 interactions_per_second=8.463757e+09 force_seconds=12.840332207 communication_seconds=1.550235766 integration_seconds=0.001005602
+=== timed run split=8x4 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.869192664 loop_seconds=11.798104352 seconds_per_step=1.179810435 interactions_per_second=8.475853e+09 force_seconds=12.762616172 communication_seconds=1.482700982 integration_seconds=0.000985854
+=== timed run split=16x2 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.897311351 loop_seconds=11.822106289 seconds_per_step=1.182210629 interactions_per_second=8.458645e+09 force_seconds=12.782432690 communication_seconds=1.907027499 integration_seconds=0.000331146
+=== timed run split=16x2 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.757517282 loop_seconds=11.677479946 seconds_per_step=1.167747995 interactions_per_second=8.563406e+09 force_seconds=12.392920222 communication_seconds=1.598010129 integration_seconds=0.000332187
+=== timed run split=16x2 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.865721200 loop_seconds=11.792883309 seconds_per_step=1.179288331 interactions_per_second=8.479606e+09 force_seconds=12.769984134 communication_seconds=1.827443265 integration_seconds=0.000343761
+=== timed run split=32x1 rep=1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.046872157 loop_seconds=10.969049453 seconds_per_step=1.096904945 interactions_per_second=9.116469e+09 force_seconds=12.011557101 communication_seconds=1.279673559 integration_seconds=0.000189108
+=== timed run split=32x1 rep=2
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.959891199 loop_seconds=10.879794645 seconds_per_step=1.087979465 interactions_per_second=9.191258e+09 force_seconds=11.935763021 communication_seconds=1.229753352 integration_seconds=0.000196540
+=== timed run split=32x1 rep=3
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28660 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.987764501 loop_seconds=10.901417955 seconds_per_step=1.090141795 interactions_per_second=9.173027e+09 force_seconds=11.971194032 communication_seconds=1.284309463 integration_seconds=0.000196548
+JobID           JobName    Elapsed   TotalCPU  AllocCPUS     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- ---------- --------------- ---------- 
+28660        nbody-hyb+   00:05:05   01:51:02         64              fortran,julia    RUNNING 
+28660.batch       batch   00:05:05   00:00:00         32                    fortran    RUNNING 
+28660.0      nbody_hyb+   00:01:21  14:41.824         64     24684K   fortran,julia  COMPLETED 
+28660.1      nbody_hyb+   00:00:15  06:12.699         64     13184K   fortran,julia  COMPLETED 
+28660.2      nbody_hyb+   00:00:14  06:11.729         64     13564K   fortran,julia  COMPLETED 
+28660.3      nbody_hyb+   00:00:13  06:12.027         64     14148K   fortran,julia  COMPLETED 
+28660.4      nbody_hyb+   00:00:15  06:20.171         64     13264K   fortran,julia  COMPLETED 
+28660.5      nbody_hyb+   00:00:15  06:19.625         64     14204K   fortran,julia  COMPLETED 
+28660.6      nbody_hyb+   00:00:15  06:17.718         64     14016K   fortran,julia  COMPLETED 
+28660.7      nbody_hyb+   00:00:15  06:20.925         64     13648K   fortran,julia  COMPLETED 
+28660.8      nbody_hyb+   00:00:15  06:22.156         64     12884K   fortran,julia  COMPLETED 
+28660.9      nbody_hyb+   00:00:15  06:24.274         64     12616K   fortran,julia  COMPLETED 
+28660.10     nbody_hyb+   00:00:15  06:33.981         64     12832K   fortran,julia  COMPLETED 
+28660.11     nbody_hyb+   00:00:15  06:31.916         64     13964K   fortran,julia  COMPLETED 
+28660.12     nbody_hyb+   00:00:15  06:32.868         64     14240K   fortran,julia  COMPLETED 
+28660.13     nbody_hyb+   00:00:15  06:41.587         64     12644K   fortran,julia  COMPLETED 
+28660.14     nbody_hyb+   00:00:14  06:38.982         64     12420K   fortran,julia  COMPLETED 
+28660.15     nbody_hyb+   00:00:15  06:40.053         64     13592K   fortran,julia  COMPLETED 

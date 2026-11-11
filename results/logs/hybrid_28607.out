@@ -1,0 +1,382 @@
+=== job metadata ===
+date=2026-11-11T17:14:31+01:00
+host=fortran
+slurm_job_id=28607
+slurm_job_name=nbody-hybrid
+slurm_partition=cpu
+slurm_nodelist=fortran
+slurm_ntasks=32
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=close
+omp_places=cores
+git_head=19f3375be0f78c9cb388729e59d227020c1a9ea6
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      54%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+mpi_version=mpirun (Open MPI) 4.1.5
+mpi_plugin=pmix nodes=1 cores=32 splits_list=2x1 4x1 8x1 16x1 32x1
+command=./build/nbody_hybrid --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== check run split=32x1
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.7
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.8
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.9
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.12
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.15
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.24
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.25
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.26
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.29
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.30
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.0
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.1
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.2
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.3
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.4
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.5
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.6
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.10
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.11
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.13
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.14
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.16
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.17
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.18
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.19
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.20
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.21
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.22
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.23
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.27
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.28
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.95aa1001.31
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=10.775357537 loop_seconds=9.797865076 seconds_per_step=0.979786508 interactions_per_second=1.020620e+10 force_seconds=10.767269728 communication_seconds=0.152789932 integration_seconds=0.000156605 initial_energy=-0.47055129572309962 final_energy=-0.47055129572013732 energy_change=2.9622970743048427e-12 relative_energy_change=-6.2953754483932707e-12 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-6.0053932856809224e-20 momentum_y=-2.4894827715395921e-20 momentum_z=-1.7966362904651761e-20
+=== timed run split=2x1 rep=1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=169.296856885 loop_seconds=153.916992786 seconds_per_step=15.391699279 interactions_per_second=6.496943e+08 force_seconds=169.287510350 communication_seconds=0.158686531 integration_seconds=0.002998742
+=== timed run split=2x1 rep=2
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=169.824960881 loop_seconds=154.396993934 seconds_per_step=15.439699393 interactions_per_second=6.476745e+08 force_seconds=169.820888668 communication_seconds=0.337344867 integration_seconds=0.002891562
+=== timed run split=2x1 rep=3
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=169.477134136 loop_seconds=154.044461861 seconds_per_step=15.404446186 interactions_per_second=6.491567e+08 force_seconds=169.473526293 communication_seconds=0.301198800 integration_seconds=0.003006117
+=== timed run split=4x1 rep=1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=84.622679546 loop_seconds=76.946878765 seconds_per_step=7.694687876 interactions_per_second=1.299585e+09 force_seconds=84.620272596 communication_seconds=0.082703703 integration_seconds=0.000915812
+=== timed run split=4x1 rep=2
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=84.632852673 loop_seconds=76.940361557 seconds_per_step=7.694036156 interactions_per_second=1.299695e+09 force_seconds=84.608121927 communication_seconds=0.081074070 integration_seconds=0.001115958
+=== timed run split=4x1 rep=3
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=85.530459366 loop_seconds=77.760238136 seconds_per_step=7.776023814 interactions_per_second=1.285991e+09 force_seconds=85.527900926 communication_seconds=0.810647822 integration_seconds=0.000925346
+=== timed run split=8x1 rep=1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=42.325272379 loop_seconds=38.478832629 seconds_per_step=3.847883263 interactions_per_second=2.598805e+09 force_seconds=42.314209007 communication_seconds=0.090164114 integration_seconds=0.000556361
+=== timed run split=8x1 rep=2
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=42.406088301 loop_seconds=38.554216463 seconds_per_step=3.855421646 interactions_per_second=2.593724e+09 force_seconds=42.399207010 communication_seconds=0.115495863 integration_seconds=0.000521620
+=== timed run split=8x1 rep=3
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=42.366606849 loop_seconds=38.517282824 seconds_per_step=3.851728282 interactions_per_second=2.596211e+09 force_seconds=42.358638299 communication_seconds=0.122375204 integration_seconds=0.000520464
+=== timed run split=16x1 rep=1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=21.458267588 loop_seconds=19.516333912 seconds_per_step=1.951633391 interactions_per_second=5.123862e+09 force_seconds=21.445149614 communication_seconds=0.191921249 integration_seconds=0.000299873
+=== timed run split=16x1 rep=2
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=21.377106288 loop_seconds=19.449861907 seconds_per_step=1.944986191 interactions_per_second=5.141373e+09 force_seconds=21.348606524 communication_seconds=0.118661243 integration_seconds=0.000344067
+=== timed run split=16x1 rep=3
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=21.443067985 loop_seconds=19.492647174 seconds_per_step=1.949264717 interactions_per_second=5.130088e+09 force_seconds=21.416296466 communication_seconds=0.170824645 integration_seconds=0.000325755
+=== timed run split=32x1 rep=1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=10.800446779 loop_seconds=9.827576948 seconds_per_step=0.982757695 interactions_per_second=1.017535e+10 force_seconds=10.793005956 communication_seconds=0.178188273 integration_seconds=0.000146020
+=== timed run split=32x1 rep=2
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=10.698047755 loop_seconds=9.734316782 seconds_per_step=0.973431678 interactions_per_second=1.027283e+10 force_seconds=10.682524389 communication_seconds=0.085340810 integration_seconds=0.000142676
+=== timed run split=32x1 rep=3
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28607 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=10.737126221 loop_seconds=9.762723471 seconds_per_step=0.976272347 interactions_per_second=1.024294e+10 force_seconds=10.724501552 communication_seconds=0.107068959 integration_seconds=0.000143949
+JobID           JobName    Elapsed   TotalCPU  AllocCPUS     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- ---------- --------------- ---------- 
+28607        nbody-hyb+   00:17:48   01:42:03         64                    fortran    RUNNING 
+28607.batch       batch   00:17:48   00:00:00         64                    fortran    RUNNING 
+28607.0      nbody_hyb+   00:00:43  14:17.509         64     28764K         fortran  COMPLETED 
+28607.1      nbody_hyb+   00:02:51  05:39.122          4     24656K         fortran  COMPLETED 
+28607.2      nbody_hyb+   00:02:52  05:40.168          4     24616K         fortran  COMPLETED 
+28607.3      nbody_hyb+   00:02:52  05:39.458          4     24588K         fortran  COMPLETED 
+28607.4      nbody_hyb+   00:01:26  05:39.659          8     24628K         fortran  COMPLETED 
+28607.5      nbody_hyb+   00:01:27  05:39.680          8     24648K         fortran  COMPLETED 
+28607.6      nbody_hyb+   00:01:28  05:43.290          8     24664K         fortran  COMPLETED 
+28607.7      nbody_hyb+   00:00:44  05:41.870         16     24680K         fortran  COMPLETED 
+28607.8      nbody_hyb+   00:00:45  05:42.552         16     24636K         fortran  COMPLETED 
+28607.9      nbody_hyb+   00:00:45  05:42.132         16     24672K         fortran  COMPLETED 
+28607.10     nbody_hyb+   00:00:23  05:52.759         32      9584K         fortran  COMPLETED 
+28607.11     nbody_hyb+   00:00:23  05:51.551         32      9964K         fortran  COMPLETED 
+28607.12     nbody_hyb+   00:00:24  05:52.331         32      9972K         fortran  COMPLETED 
+28607.13     nbody_hyb+   00:00:14  06:21.798         64      9860K         fortran  COMPLETED 
+28607.14     nbody_hyb+   00:00:14  06:19.934         64     16348K         fortran  COMPLETED 
+28607.15     nbody_hyb+   00:00:14  06:19.641         64      8312K         fortran  COMPLETED 

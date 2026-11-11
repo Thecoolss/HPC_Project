@@ -5,8 +5,10 @@
 | Item | Value |
 |---|---|
 | Cluster | SciTech, partition `cpu`, nodes `haskell` and `fortran`: each 2 × AMD EPYC 9755 (128 cores each, SMT 2, 512 logical CPUs, 2 NUMA nodes) |
-| Modules | `env/modules.sh`: `GCC/12.3.0` (loads `GCCcore/12.3.0`) |
-| Compiler flags | `-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror` |
+| Modules | `env/modules.sh`: `OpenMPI/4.1.5-GCC-12.3.0` (loads `GCC/12.3.0`; `mpicc` wraps the same gcc 12.3.0) for serial, OpenMP and hybrid. `env/modules_openacc.sh`: `nvhpc/25.7` (`nvc`, CUDA 12.9) for OpenACC only |
+| GPUs | haskell: 2 × RTX 6000 Ada (cc89); fortran: 2 × and julia: 1 × RTX PRO 6000 Blackwell (cc120). Request with `--partition=gpu --gres=gpu:1` |
+| Login node | `rust`, a QEMU virtual CPU without AVX: do not build with `-march=native` or `-gpu=ccnative` there |
+| Compiler flags | `-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror`, plus `-fopenmp` for OpenMP and hybrid. OpenACC: the same without `-Werror`, plus `-acc -gpu=cc89,cc120 -Minfo=accel`. Every binary prints its real flags in `build_flags` |
 | Seed | 42 (all randomness comes from `--seed`) |
 
 Each binary prints its Git commit (`git describe --always --dirty`), compiler,
@@ -20,7 +22,15 @@ git clone <repository-url> && cd <repository>
 git checkout <commit-or-tag>
 . env/modules.sh
 make clean
-make test
+make            # nbody_serial, nbody_openmp, nbody_hybrid
+make test       # unit + CLI tests; one core, no MPI or GPU needed
+```
+
+OpenACC (separate environment, run on a GPU node):
+
+```sh
+. env/modules_openacc.sh
+make openacc    # build/nbody_openacc for cc89 and cc120
 ```
 
 ## Serial baseline

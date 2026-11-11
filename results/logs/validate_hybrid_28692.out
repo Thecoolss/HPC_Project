@@ -1,0 +1,145 @@
+=== job metadata ===
+date=2026-11-11T23:58:26+01:00
+host=fortran
+slurm_job_id=28692
+slurm_job_name=nbody-validate-hybrid
+slurm_partition=cpu
+slurm_nodelist=fortran,haskell
+slurm_ntasks=16
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=close
+omp_places=cores
+git_head=3cf87543582fdcaddfdeda02dd86a922fa5bdb27
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      53%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+mpi_version=mpirun (Open MPI) 4.1.5
+mpi_tcp_networks=10.205.20.0/24
+mpi_pml=ob1 mpi_btl=self,vader,tcp
+workload: n=1000 steps=100
+=== pass 1: one node, 1 thread per rank
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=1: PASS
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=2: PASS
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=3: PASS
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=4: PASS
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=7: PASS
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=8: PASS
+=== pass 2: two nodes, 1 thread per rank
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=2: PASS
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=3: PASS
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=8: PASS
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=16: PASS
+=== pass 3: two nodes, 2 threads per rank
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=2: PASS
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=4: PASS
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+reference: # nbody_state backend=serial n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+candidate: # nbody_state backend=hybrid n=1000 steps=100 dt=0.001 epsilon=0.01 seed=42 git_commit=serial-baseline-v1-26-g3cf87543582f columns=x,y,z,vx,vy,vz
+max_abs_diff x=0.000e+00 y=0.000e+00 z=0.000e+00 vx=0.000e+00 vy=0.000e+00 vz=0.000e+00
+atol=1e-10 rtol=1e-08 n=1000 failures=0
+PASS
+hybrid ranks=8: PASS
+=== all hybrid validation passes: PASS
+JobID           JobName    Elapsed  AllocCPUS        NodeList      State 
+------------ ---------- ---------- ---------- --------------- ---------- 
+28692        nbody-val+   00:00:20         32 fortran,haskell    RUNNING 
+28692.batch       batch   00:00:20         16         fortran    RUNNING 
+28692.0      nbody_hyb+   00:00:01          2         fortran  COMPLETED 
+28692.1      nbody_hyb+   00:00:01          4         haskell  COMPLETED 
+28692.2      nbody_hyb+   00:00:01          6         fortran  COMPLETED 
+28692.3      nbody_hyb+   00:00:01          8         haskell  COMPLETED 
+28692.4      nbody_hyb+   00:00:01         14         fortran  COMPLETED 
+28692.5      nbody_hyb+   00:00:01         16         haskell  COMPLETED 
+28692.6      nbody_hyb+   00:00:02          4 fortran,haskell  COMPLETED 
+28692.7      nbody_hyb+   00:00:01          6 fortran,haskell  COMPLETED 
+28692.8      nbody_hyb+   00:00:01         16 fortran,haskell  COMPLETED 
+28692.9      nbody_hyb+   00:00:01         32 fortran,haskell  COMPLETED 
+28692.10     nbody_hyb+   00:00:02          8 fortran,haskell  COMPLETED 
+28692.11     nbody_hyb+   00:00:01         16 fortran,haskell  COMPLETED 
+28692.12     nbody_hyb+   00:00:01         32 fortran,haskell  COMPLETED 

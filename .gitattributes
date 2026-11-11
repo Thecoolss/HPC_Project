@@ -1,0 +1,9 @@
+# Keep Linux line endings in the files the cluster runs or compiles, even when
+# they are edited on Windows: a CRLF shell script fails with "$'\r': command
+# not found". Other files (e.g. CSV written by Python) are left as they are.
+*.sh      text eol=lf
+*.sbatch  text eol=lf
+*.c       text eol=lf
+*.h       text eol=lf
+*.py      text eol=lf
+Makefile  text eol=lf

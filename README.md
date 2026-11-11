@@ -11,10 +11,15 @@ Requirements: a C11 compiler, GNU Make, the C math library and Python 3 (for
 `scripts/compare_states.py`).
 
 ```sh
-. env/modules.sh   # on the cluster
-make
-make test
+. env/modules.sh   # on the cluster: OpenMPI/4.1.5-GCC-12.3.0
+make               # serial, OpenMP and hybrid MPI+OpenMP
+make test          # unit and CLI tests (no MPI or GPU needed)
 ```
+
+The OpenACC backend uses its own environment: `. env/modules_openacc.sh &&
+make openacc`. `make test-hybrid` runs only the `partition_range` tests;
+`tests/test_hybrid.sh` checks the MPI backend against serial inside a Slurm
+allocation.
 
 Flags: `-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes
 -Werror`. `make WERROR=` disables `-Werror`; `make OPTFLAGS=-O3` changes the

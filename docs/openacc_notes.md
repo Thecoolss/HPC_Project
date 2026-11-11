@@ -28,6 +28,29 @@ Implications for the backend:
   GPU, so the CPU/GPU crossover is expected at fairly large N; the particle
   count sweep should show where.
 
+## Day 2 – backend implemented
+
+- `src/force_openacc.c`: one GPU thread per target (`parallel loop gang
+  vector` over i, `loop seq` over j). `copyin`/`copyout` clauses are
+  present-or-copy, so the function also works outside a data region.
+- `src/main_openacc.c`: `enter data` before the initial force, `exit data`
+  after the last step, so the arrays stay on the GPU for the whole run.
+  Kick and drift run on the device (`present` clauses: a missing region is an
+  error, never a silent per-step copy). The two transfers are timed as
+  `communication_seconds`; `elapsed_seconds` includes them. `acc_init` runs
+  before the timers so context creation is not counted.
+- `tests/test_openacc.c`: kernel vs serial outside a data region (full range,
+  sub-range, untouched targets, empty range).
+- `slurm/openacc.sbatch`: build on the GPU node, tests, `--check` run with
+  `NVCOMPILER_ACC_TIME=1`, state comparison with serial, `REPS` timed runs.
+- CPU-only check (gcc 11 `-fopenacc`, host fallback): kernel tests pass,
+  final state matches serial (`compare_states.py` PASS) at n = 1, 2, 1000.
+  This proves the logic, not the GPU path; the cluster job does that.
+
+| Item | Result | Evidence |
+|---|---|---|
+| GPU job | TODO: job id, node, tests, compare, timings | `results/logs/openacc_<id>.out` |
+
 ## Plan (Days 2–10)
 - Day 2: `compute_accelerations_openacc` (present-or-copy clauses) +
   `main_openacc.c` with one `acc data` region around the step loop.

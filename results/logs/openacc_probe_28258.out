@@ -1,0 +1,26 @@
+=== node
+fortran
+=== gpu
+name, compute_cap, memory.total [MiB], driver_version
+NVIDIA RTX PRO 6000 Blackwell Server Edition, 12.0, 97887 MiB, 580.126.09
+=== CUDA_VISIBLE_DEVICES=0
+=== nvc
+
+nvc 25.7-0 64-bit target on x86-64 Linux -tp znver5 
+=== nvaccelinfo (summary)
+Device Name:                   NVIDIA RTX PRO 6000 Blackwell Server Edition
+Device Revision Number:        12.0
+Default Target:                cc120
+=== compile
+main:
+     18, Generating copyin(m[:4096],x[:4096]) [if not already present]
+         Generating copyout(a_dev[:4096]) [if not already present]
+         Generating implicit firstprivate(i)
+         Generating NVIDIA GPU code
+         21, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+         24, #pragma acc loop seq
+=== run (NVCOMPILER_ACC_NOTIFY=1 prints each kernel launch)
+launch CUDA kernel  file=/home/hpcb24/HPC_Project/tests/acc_smoke/acc_smoke.c function=main line=18 device=0 threadid=1 num_gangs=32 num_workers=1 vector_length=128 grid=32 block=128
+acc devices (nvidia): 1
+max |device - host| / max |host|: 1.436e-15
+PASS

@@ -21,7 +21,9 @@ else
     MPIRUN="${MPIRUN:-mpirun -n}"
 fi
 
-tmpdir=$(mktemp -d)
+# Ranks may run on other nodes than this script, so in multi-node jobs set
+# TMPDIR to a shared directory (slurm/validate_hybrid.sbatch does this).
+tmpdir=$(mktemp -d "${TMPDIR:-/tmp}/nbody_test_hybrid.XXXXXX")
 trap 'rm -rf "$tmpdir"' EXIT
 
 ./build/nbody_serial --n "$N" --steps "$STEPS" --output "$tmpdir/ref.txt" \

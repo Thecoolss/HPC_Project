@@ -32,6 +32,13 @@ export N="${N:-1000}"
 export STEPS="${STEPS:-100}"
 MPI_PLUGIN="${MPI_PLUGIN:-pmix}"
 
+# tests/test_hybrid.sh writes state files from every node, so its temporary
+# directory must be on the shared filesystem, not node-local /tmp or
+# /var/tmp (job 28687: rank 0 on haskell could not write to a /var/tmp
+# directory created on fortran). build/ is git-ignored.
+export TMPDIR="$SLURM_SUBMIT_DIR/build/tmp"
+mkdir -p "$TMPDIR"
+
 export OMP_PLACES=cores
 export OMP_PROC_BIND=close
 # Same inter-node network restriction as slurm/hybrid.sbatch (job 28606).

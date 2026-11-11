@@ -1,0 +1,118 @@
+=== job metadata ===
+date=2026-11-11T17:06:07+01:00
+host=fortran
+slurm_job_id=28605
+slurm_job_name=nbody-hybrid
+slurm_partition=cpu
+slurm_nodelist=fortran
+slurm_ntasks=32
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=close
+omp_places=cores
+git_head=19f3375be0f78c9cb388729e59d227020c1a9ea6
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      53%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+mpi_version=mpirun (Open MPI) 4.1.5
+mpi_plugin=pmix nodes=1 cores=32 splits_list=1x32 2x16 4x8 8x4 16x2 32x1
+command=./build/nbody_hybrid --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== check run split=32x1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=10.716313141 loop_seconds=9.746806919 seconds_per_step=0.974680692 interactions_per_second=1.025967e+10 force_seconds=10.709059490 communication_seconds=0.121415587 integration_seconds=0.000133002 initial_energy=-0.47055129572309962 final_energy=-0.47055129572013732 energy_change=2.9622970743048427e-12 relative_energy_change=-6.2953754483932707e-12 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-6.0053932856809224e-20 momentum_y=-2.4894827715395921e-20 momentum_z=-1.7966362904651761e-20
+=== timed run split=1x32 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (32 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.673460370 loop_seconds=10.687953910 seconds_per_step=1.068795391 interactions_per_second=9.356234e+09 force_seconds=11.665173923 communication_seconds=0.000012998 integration_seconds=0.008269384
+=== timed run split=1x32 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (32 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.224746190 loop_seconds=10.256116880 seconds_per_step=1.025611688 interactions_per_second=9.750181e+09 force_seconds=11.216177638 communication_seconds=0.000018503 integration_seconds=0.008545400
+=== timed run split=1x32 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (32 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.638318062 loop_seconds=10.654219509 seconds_per_step=1.065421951 interactions_per_second=9.385859e+09 force_seconds=11.629499547 communication_seconds=0.000014880 integration_seconds=0.008797184
+=== timed run split=2x16 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.459958410 loop_seconds=10.491348947 seconds_per_step=1.049134895 interactions_per_second=9.531567e+09 force_seconds=11.450333223 communication_seconds=0.098420449 integration_seconds=0.003805458
+=== timed run split=2x16 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.615979211 loop_seconds=10.639215062 seconds_per_step=1.063921506 interactions_per_second=9.399096e+09 force_seconds=11.606287712 communication_seconds=0.066095552 integration_seconds=0.005330361
+=== timed run split=2x16 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.592918221 loop_seconds=10.610288688 seconds_per_step=1.061028869 interactions_per_second=9.424720e+09 force_seconds=11.560179491 communication_seconds=0.078471917 integration_seconds=0.003777637
+=== timed run split=4x8 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.652742780 loop_seconds=10.679506386 seconds_per_step=1.067950639 interactions_per_second=9.363635e+09 force_seconds=11.635480645 communication_seconds=0.158018684 integration_seconds=0.001892538
+=== timed run split=4x8 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.592219209 loop_seconds=10.621216426 seconds_per_step=1.062121643 interactions_per_second=9.415023e+09 force_seconds=11.558375086 communication_seconds=0.182430132 integration_seconds=0.001865691
+=== timed run split=4x8 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.682758535 loop_seconds=10.707199259 seconds_per_step=1.070719926 interactions_per_second=9.339417e+09 force_seconds=11.585877803 communication_seconds=0.173549804 integration_seconds=0.001954946
+=== timed run split=8x4 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.655250651 loop_seconds=10.683596217 seconds_per_step=1.068359622 interactions_per_second=9.360050e+09 force_seconds=11.600806938 communication_seconds=0.207446217 integration_seconds=0.000938835
+=== timed run split=8x4 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.486388210 loop_seconds=10.521477152 seconds_per_step=1.052147715 interactions_per_second=9.504274e+09 force_seconds=11.405121178 communication_seconds=0.265692274 integration_seconds=0.000910136
+=== timed run split=8x4 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.663625059 loop_seconds=10.683191194 seconds_per_step=1.068319119 interactions_per_second=9.360405e+09 force_seconds=11.616056890 communication_seconds=0.194759191 integration_seconds=0.000921432
+=== timed run split=16x2 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.596433434 loop_seconds=10.628056544 seconds_per_step=1.062805654 interactions_per_second=9.408964e+09 force_seconds=11.561733700 communication_seconds=0.431464230 integration_seconds=0.000495657
+=== timed run split=16x2 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.619930650 loop_seconds=10.639783027 seconds_per_step=1.063978303 interactions_per_second=9.398594e+09 force_seconds=11.535355581 communication_seconds=0.619926663 integration_seconds=0.000485262
+=== timed run split=16x2 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.573792288 loop_seconds=10.597707673 seconds_per_step=1.059770767 interactions_per_second=9.435909e+09 force_seconds=11.474162783 communication_seconds=0.733164055 integration_seconds=0.000475157
+=== timed run split=32x1 rep=1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=10.909536027 loop_seconds=9.925129987 seconds_per_step=0.992512999 interactions_per_second=1.007533e+10 force_seconds=10.902356415 communication_seconds=0.261764122 integration_seconds=0.000139139
+=== timed run split=32x1 rep=2
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=10.781156990 loop_seconds=9.808526260 seconds_per_step=0.980852626 interactions_per_second=1.019511e+10 force_seconds=10.766491139 communication_seconds=0.130510771 integration_seconds=0.000139690
+=== timed run split=32x1 rep=3
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=1 gpu_model="none" host=fortran slurm_job_id=28605 git_commit=serial-baseline-v1-20-g19f3375be0f7 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=10.818140601 loop_seconds=9.839454931 seconds_per_step=0.983945493 interactions_per_second=1.016306e+10 force_seconds=10.808044229 communication_seconds=0.165456941 integration_seconds=0.000178515
+JobID           JobName    Elapsed   TotalCPU  AllocCPUS     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- ---------- --------------- ---------- 
+28605        nbody-hyb+   00:04:52   02:04:33         64                    fortran    RUNNING 
+28605.batch       batch   00:04:52   00:00:00         64                    fortran    RUNNING 
+28605.0      nbody_hyb+   00:00:42  14:16.729         64     24652K         fortran  COMPLETED 
+28605.1      nbody_hyb+   00:00:14  06:04.521         64      8376K         fortran  COMPLETED 
+28605.2      nbody_hyb+   00:00:13  05:52.327         64      9192K         fortran  COMPLETED 
+28605.3      nbody_hyb+   00:00:14  06:07.489         64      9508K         fortran  COMPLETED 
+28605.4      nbody_hyb+   00:00:13  06:01.877         64      9664K         fortran  COMPLETED 
+28605.5      nbody_hyb+   00:00:14  06:04.879         64      9380K         fortran  COMPLETED 
+28605.6      nbody_hyb+   00:00:14  06:04.013         64     10156K         fortran  COMPLETED 
+28605.7      nbody_hyb+   00:00:13  06:05.073         64      9904K         fortran  COMPLETED 
+28605.8      nbody_hyb+   00:00:14  06:05.102         64      9624K         fortran  COMPLETED 
+28605.9      nbody_hyb+   00:00:14  06:06.214         64      8980K         fortran  COMPLETED 
+28605.10     nbody_hyb+   00:00:14  06:06.308         64      9032K         fortran  COMPLETED 
+28605.11     nbody_hyb+   00:00:14  06:01.283         64      8316K         fortran  COMPLETED 
+28605.12     nbody_hyb+   00:00:14  06:06.536         64      9128K         fortran  COMPLETED 
+28605.13     nbody_hyb+   00:00:14  06:07.886         64      9836K         fortran  COMPLETED 
+28605.14     nbody_hyb+   00:00:14  06:09.044         64      9432K         fortran  COMPLETED 
+28605.15     nbody_hyb+   00:00:14  06:07.188         64      9808K         fortran  COMPLETED 
+28605.16     nbody_hyb+   00:00:14  06:24.107         64     10116K         fortran  COMPLETED 
+28605.17     nbody_hyb+   00:00:14  06:20.974         64      9240K         fortran  COMPLETED 
+28605.18     nbody_hyb+   00:00:14  06:22.300         64      9224K         fortran  COMPLETED 

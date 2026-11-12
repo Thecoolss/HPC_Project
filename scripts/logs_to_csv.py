@@ -98,15 +98,15 @@ def group_timed_runs(runs):
 def sort_order(configuration):
     """Sort by backend, then numerically by N, MPI ranks and OpenMP threads."""
     backend, n, steps, ranks, threads, nodes, host, commit = configuration
-    return (backend, int(n), int(ranks), int(threads))
+    return (backend, int(n), int(nodes), int(ranks), int(threads))
 
 
 def make_summary_table(runs):
     """Build a Markdown table with one row per configuration."""
     lines = [
-        "| backend | N | steps | ranks | threads | host | commit | reps "
+        "| backend | N | steps | nodes | ranks | threads | host | commit | reps "
         "| median s/step | spread | median interactions/s | job |",
-        "|---|---:|---:|---:|---:|---|---|---:|---:|---:|---:|---|",
+        "|---|---:|---:|---:|---:|---:|---|---|---:|---:|---:|---:|---|",
     ]
 
     groups = group_timed_runs(runs)
@@ -125,7 +125,7 @@ def make_summary_table(runs):
         jobs = ",".join(job_ids)
 
         lines.append(
-            f"| {backend} | {n} | {steps} | {ranks} | {threads} | {host} "
+            f"| {backend} | {n} | {steps} | {nodes} | {ranks} | {threads} | {host} "
             f"| {commit} | {len(group)} | {median_time:.6g} | {spread:.1%} "
             f"| {median_interactions:.4g} | {jobs} |")
 

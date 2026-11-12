@@ -1,0 +1,7 @@
+src/force_openmp.c:41:14: missed: couldn't vectorize loop
+src/force_openmp.c:41:14: missed: not vectorized: control flow in loop.
+src/force_openmp.c:22:27: missed: couldn't vectorize loop
+src/force_openmp.c:22:27: missed: not vectorized: control flow in loop.
+src/force_openmp.c:33:43: missed: statement clobbers memory: _96 = sqrt (distance_squared_76);
+src/force_openmp.c:11:6: missed: statement clobbers memory: __builtin_GOMP_parallel (compute_accelerations_openmp._omp_fn.0, &.omp_data_o.3, 0, 0);
+src/force_openmp.c:16:9: missed: not vectorized: vectorization is not profitable.

@@ -1,0 +1,252 @@
+=== job metadata ===
+date=2026-11-12T15:11:27+01:00
+host=fortran
+slurm_job_id=28859
+slurm_job_name=nbody-hybrid
+slurm_partition=cpu
+slurm_nodelist=fortran,julia
+slurm_ntasks=32
+slurm_cpus_per_task=1
+omp_num_threads=unset
+omp_proc_bind=close
+omp_places=cores
+git_head=5e44f5b563fe98bdc8c56926946a935007442c77
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      53%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+mpi_version=mpirun (Open MPI) 4.1.5
+mpi_plugin=pmix nodes=2 cores=32 splits_list=2x16 4x8 8x4 16x2 32x1
+mpi_tcp_networks=10.205.20.0/24
+mpi_pml=ob1 mpi_btl=self,vader,tcp
+command=./build/nbody_hybrid --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== check run split=32x1
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.0
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.1
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.3
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.5
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.6
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.7
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.2
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.4
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.8
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.9
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.10
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.11
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.12
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.13
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.14
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  fortran
+  System call: unlink(2) /dev/shm/vader_segment.fortran.1000201.59e83cf3.15
+  Error:       No such file or directory (errno 2)
+--------------------------------------------------------------------------
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.005501013 loop_seconds=10.918937015 seconds_per_step=1.091893701 interactions_per_second=9.158309e+09 force_seconds=11.980883344 communication_seconds=1.284632770 integration_seconds=0.000208553 initial_energy=-0.47055129572309962 final_energy=-0.47055129572013732 energy_change=2.9622970743048427e-12 relative_energy_change=-6.2953754483932707e-12 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-6.0053932856809224e-20 momentum_y=-2.4894827715395921e-20 momentum_z=-1.7966362904651761e-20
+=== timed run split=2x16 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.870987460 loop_seconds=10.880859837 seconds_per_step=1.088085984 interactions_per_second=9.190358e+09 force_seconds=11.848033832 communication_seconds=0.334645352 integration_seconds=0.004246438
+=== timed run split=2x16 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.861218831 loop_seconds=10.871609490 seconds_per_step=1.087160949 interactions_per_second=9.198178e+09 force_seconds=11.839666189 communication_seconds=0.348417934 integration_seconds=0.004097635
+=== timed run split=2x16 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (16 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=2 omp_threads=16 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.839187440 loop_seconds=11.760107076 seconds_per_step=1.176010708 interactions_per_second=8.503239e+09 force_seconds=12.816686745 communication_seconds=1.337889517 integration_seconds=0.003792857
+=== timed run split=4x8 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.674561635 loop_seconds=11.598498412 seconds_per_step=1.159849841 interactions_per_second=8.621720e+09 force_seconds=12.631321273 communication_seconds=1.126842725 integration_seconds=0.002051147
+=== timed run split=4x8 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.497801904 loop_seconds=11.504946949 seconds_per_step=1.150494695 interactions_per_second=8.691826e+09 force_seconds=12.444970307 communication_seconds=1.040029728 integration_seconds=0.001989562
+=== timed run split=4x8 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (8 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=4 omp_threads=8 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.780571383 loop_seconds=11.786188742 seconds_per_step=1.178618874 interactions_per_second=8.484422e+09 force_seconds=12.742421448 communication_seconds=1.310500433 integration_seconds=0.002018869
+=== timed run split=8x4 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.836068608 loop_seconds=11.757157406 seconds_per_step=1.175715741 interactions_per_second=8.505372e+09 force_seconds=12.752571537 communication_seconds=1.298629453 integration_seconds=0.001041450
+=== timed run split=8x4 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.703728877 loop_seconds=11.623531747 seconds_per_step=1.162353175 interactions_per_second=8.603151e+09 force_seconds=12.431885845 communication_seconds=1.387895808 integration_seconds=0.001019018
+=== timed run split=8x4 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (4 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=8 omp_threads=4 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.662353599 loop_seconds=11.586896482 seconds_per_step=1.158689648 interactions_per_second=8.630352e+09 force_seconds=12.597811679 communication_seconds=1.373113750 integration_seconds=0.001063819
+=== timed run split=16x2 rep=1
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.858764246 loop_seconds=11.786882675 seconds_per_step=1.178688267 interactions_per_second=8.483923e+09 force_seconds=12.786457530 communication_seconds=1.698759629 integration_seconds=0.000478707
+=== timed run split=16x2 rep=2
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.800828477 loop_seconds=11.723834387 seconds_per_step=1.172383439 interactions_per_second=8.529547e+09 force_seconds=12.501354097 communication_seconds=1.799646513 integration_seconds=0.000439431
+=== timed run split=16x2 rep=3
+srun: Job step's --cpus-per-task value exceeds that of job (2 > 1). Job step may never run.
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=16 omp_threads=2 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=12.886029794 loop_seconds=11.807233487 seconds_per_step=1.180723349 interactions_per_second=8.469300e+09 force_seconds=12.800790836 communication_seconds=1.860438162 integration_seconds=0.000447222
+=== timed run split=32x1 rep=1
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.998741748 loop_seconds=10.914969773 seconds_per_step=1.091496977 interactions_per_second=9.161638e+09 force_seconds=11.982056800 communication_seconds=1.266117637 integration_seconds=0.000218920
+=== timed run split=32x1 rep=2
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.950543950 loop_seconds=10.866639539 seconds_per_step=1.086663954 interactions_per_second=9.202385e+09 force_seconds=11.930789806 communication_seconds=1.234178726 integration_seconds=0.000223426
+=== timed run split=32x1 rep=3
+backend=hybrid n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=32 omp_threads=1 nodes=2 gpu_model="none" host=fortran slurm_job_id=28859 git_commit=serial-baseline-v1-32-gcf072160ebc9 compiler=mpicc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.959814621 loop_seconds=10.875723018 seconds_per_step=1.087572302 interactions_per_second=9.194699e+09 force_seconds=11.942007409 communication_seconds=1.235961176 integration_seconds=0.000217097
+JobID           JobName    Elapsed   TotalCPU  AllocCPUS     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- ---------- --------------- ---------- 
+28859        nbody-hyb+   00:04:07   01:50:06         64              fortran,julia    RUNNING 
+28859.batch       batch   00:04:07   00:00:00         32                    fortran    RUNNING 
+28859.0      nbody_hyb+   00:00:41  14:28.293         64     20536K   fortran,julia  COMPLETED 
+28859.1      nbody_hyb+   00:00:13  06:10.868         64     13656K   fortran,julia  COMPLETED 
+28859.2      nbody_hyb+   00:00:12  06:10.875         64     12956K   fortran,julia  COMPLETED 
+28859.3      nbody_hyb+   00:00:14  06:13.170         64     12820K   fortran,julia  COMPLETED 
+28859.4      nbody_hyb+   00:00:13  06:17.408         64     14316K   fortran,julia  COMPLETED 
+28859.5      nbody_hyb+   00:00:13  06:17.059         64     13204K   fortran,julia  COMPLETED 
+28859.6      nbody_hyb+   00:00:14  06:15.517         64     14208K   fortran,julia  COMPLETED 
+28859.7      nbody_hyb+   00:00:14  06:22.573         64     12728K   fortran,julia  COMPLETED 
+28859.8      nbody_hyb+   00:00:13  06:21.228         64     13260K   fortran,julia  COMPLETED 
+28859.9      nbody_hyb+   00:00:14  06:20.449         64     13688K   fortran,julia  COMPLETED 
+28859.10     nbody_hyb+   00:00:13  06:29.607         64     13828K   fortran,julia  COMPLETED 
+28859.11     nbody_hyb+   00:00:14  06:29.271         64     14288K   fortran,julia  COMPLETED 
+28859.12     nbody_hyb+   00:00:14  06:30.824         64     13536K   fortran,julia  COMPLETED 
+28859.13     nbody_hyb+   00:00:13  06:34.094         64     13180K   fortran,julia  COMPLETED 
+28859.14     nbody_hyb+   00:00:13  06:32.459         64     12784K   fortran,julia  COMPLETED 
+28859.15     nbody_hyb+   00:00:13  06:32.881         64     12632K   fortran,julia  COMPLETED 

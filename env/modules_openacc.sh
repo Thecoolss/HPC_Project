@@ -8,12 +8,17 @@
 # Build for both GPU generations (Makefile ACC_FLAGS): cc89 on haskell and
 # cc120 on fortran/julia. The login node has no GPU, so never rely on
 # -gpu=ccnative there. Record any change here and in REPRODUCE.md.
+#
+# Use a separate shell (or the GPU job) for OpenACC: `module purge` does not
+# undo nvhpc's PATH change, so env/modules.sh in the same shell links with
+# /usr/bin/ld and the hybrid build fails (checked on rust, 12 Nov).
 NBODY_ACC_MODULES="${NBODY_ACC_MODULES:-nvhpc/25.7}"
 
 if command -v module >/dev/null 2>&1; then
     module purge
     # shellcheck disable=SC2086 # word splitting is intended (module list)
     module load $NBODY_ACC_MODULES
+    echo "env/modules_openacc.sh: nvhpc loaded; use a new shell for env/modules.sh" >&2
 else
     echo "env/modules_openacc.sh: 'module' command not found" >&2
 fi

@@ -44,14 +44,19 @@ CORES=$((SLURM_NTASKS * SLURM_CPUS_PER_TASK))
 
 # Threads of each rank pinned to physical cores, packed next to each other.
 export OMP_PLACES=cores
-export 
-OMP_PROC_BIND=close
-
+export OMP_PROC_BIND=close
 
 # Open MPI: use only the main 10.205.20.0/24 network between nodes. Each node
 # also has a 10.205.10.0/24 VLAN, and job 28606 failed with TCP connect()
 # errors to 10.205.10.x addresses at 16 ranks across 2 nodes.
 export OMPI_MCA_btl_tcp_if_include="${OMPI_MCA_btl_tcp_if_include:-10.205.20.0/24}"
+# Open MPI transport: use Open MPI's own ob1 layer with shared memory (vader)
+# inside a node and TCP between nodes, not UCX. With UCX, 16 ranks on 2 nodes
+# segfaulted in libucs on haskell 3/3 times (jobs 28689, 28690); with these
+# settings the same run passed 3/3 (job 28690). Keep them for every hybrid run
+# so all timings use the same transport.
+export OMPI_MCA_pml="${OMPI_MCA_pml:-ob1}"
+export OMPI_MCA_btl="${OMPI_MCA_btl:-self,vader,tcp}"
 
 if [ ! -x build/nbody_hybrid ]; then
     echo "build/nbody_hybrid not found; run 'make' first" >&2
@@ -62,6 +67,7 @@ sh scripts/job_metadata.sh
 echo "mpi_version=$(mpirun --version 2>/dev/null | head -n 1)"
 echo "mpi_plugin=$MPI_PLUGIN nodes=$NODES cores=$CORES splits_list=$SPLITS"
 echo "mpi_tcp_networks=$OMPI_MCA_btl_tcp_if_include"
+echo "mpi_pml=$OMPI_MCA_pml mpi_btl=$OMPI_MCA_btl"
 echo "command=./build/nbody_hybrid ${ARGS[*]}"
 
 # Runs one split. Usage: run_split RANKS THREADS [extra program options]

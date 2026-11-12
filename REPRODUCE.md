@@ -129,31 +129,44 @@ on the same node(s).
 | E4 | Ranks × threads on 32 cores, one node | `sbatch slurm/hybrid.sbatch` (defaults: `SPLITS="1x32 2x16 4x8 8x4 16x2 32x1"`) |
 | E5 | The E4 splits on two nodes, 16 + 16 cores | `sbatch --nodes=2 --ntasks-per-node=16 --export=ALL,SPLITS="2x16 4x8 8x4 16x2 32x1" slurm/hybrid.sbatch` |
 
-Recorded runs. All binaries were built from `19f3375be0f7`
-(`git_commit` in each result line); `git_head` is the checkout the job script
-ran from.
+Reported runs. "Binary" is the `git_commit` in each result line; `git_head`
+is the checkout the job script ran from. E3–E5 ran after #10, so every log
+shows `omp_proc_bind=close` and `mpi_pml=ob1`. E2 was not rerun: the OpenMP
+code and `slurm/openmp.sbatch` settings did not change.
 
-| ID | Job | Node(s) | `git_head` | Status | Log |
+| ID | Job | Node(s) | Binary | `git_head` | Log |
 |---|---:|---|---|---|---|
-| E2 | 28604 | `haskell` | `19f3375` | Completed | `results/logs/openmp_28604.out` |
-| E3 | 28607 | `fortran` | `19f3375` | Completed | `results/logs/hybrid_28607.out` |
-| E4 | 28605 | `fortran` | `19f3375` | Completed | `results/logs/hybrid_28605.out` |
-| E5 | 28606 | `fortran`, `haskell` | `19f3375` | Cancelled: Open MPI tried the second network (10.205.10.0/24) between nodes; fixed in `5a30305`. Not used | `results/logs/hybrid_28606.out` |
-| E5 | 28660 | `fortran`, `julia` | `5a30305` | Completed, **not comparable with E4**: the log shows `omp_proc_bind=unset` (export bug in `5a30305`, fixed in #10), and it ran on UCX. Rerun on `cf07216` or later | `results/logs/hybrid_28660.out` |
+| E2 | 28604 | `haskell` | `19f3375be0f7` | `19f3375` | `results/logs/openmp_28604.out` |
+| E3 | 28860 | `fortran` | `cf072160ebc9` | `5e44f5b` | `results/logs/hybrid_28860.out` |
+| E4 | 28858 | `fortran` | `cf072160ebc9` | `cf07216` | `results/logs/hybrid_28858.out` |
+| E5 | 28859 | `fortran`, `julia` | `cf072160ebc9` | `5e44f5b` | `results/logs/hybrid_28859.out` |
+
+`5e44f5b` only adds a nodes column to `scripts/logs_to_csv.py`, so the job
+script and binary are the same as `cf07216`. The E3 and E5 logs contain Open
+MPI warnings `unlink(2) /dev/shm/vader_segment... No such file or directory`
+at shutdown; they are harmless (the shared-memory files are already removed)
+and the runs completed normally. E5 2×16 has an 8.2% spread, the noisiest row.
+
+Superseded runs, kept as history and not used in the CSV:
+
+| Job | Was | Why superseded |
+|---:|---|---|
+| 28605, 28607 | E4, E3 | Ran on UCX, before #10 |
+| 28606 | E5 | Cancelled: Open MPI used the second network (10.205.10.0/24) between nodes; fixed in `5a30305` |
+| 28660 | E5 | `omp_proc_bind=unset` (export bug in `5a30305`, fixed in #10) and UCX |
 
 Collect the runs into the committed CSV and summary (this regenerates
 `results/scaling_summary.md` exactly):
 
 ```sh
 python3 scripts/logs_to_csv.py results/logs/openmp_28604.out \
-    results/logs/hybrid_28605.out results/logs/hybrid_28607.out \
-    results/logs/hybrid_28660.out \
+    results/logs/hybrid_28858.out results/logs/hybrid_28859.out \
+    results/logs/hybrid_28860.out \
     --csv results/scaling_runs.csv --summary results/scaling_summary.md
 ```
 
 Speedups use the serial times above as the baseline (N = 20,000: job 28027;
-N = 100,000: job 28028). `results/scaling_summary.md` has no nodes column: the
-1-node and 2-node rows differ only in the job ID.
+N = 100,000: job 28028).
 
 ## Hybrid correctness on the cluster
 

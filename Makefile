@@ -85,6 +85,22 @@ test-hybrid: $(BUILD_DIR)/test_hybrid
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)
 
+openacc: $(BUILD_DIR)/nbody_openacc
+
+$(BUILD_DIR)/build_info_openacc: FORCE | $(BUILD_DIR)
+	@echo '$(ACC_BUILD_INFO)' | cmp -s - $@ || echo '$(ACC_BUILD_INFO)' > $@
+
+$(BUILD_DIR)/nbody_openacc: $(ACC_SOURCES) src/main_openacc.c $(HEADERS) $(BUILD_DIR)/build_info_openacc
+	$(ACC_CC) $(CPPFLAGS) -DNBODY_COMPILER='"$(ACC_CC)"' \
+	    -DNBODY_BUILD_FLAGS='"$(ACC_CFLAGS)"' -DNBODY_GIT_COMMIT='"$(GIT_COMMIT)"' \
+	    $(ACC_CFLAGS) $(ACC_SOURCES) src/main_openacc.c -o $@ $(LDLIBS)
+
+$(BUILD_DIR)/test_openacc: $(ACC_SOURCES) src/force_serial.c tests/test_openacc.c $(HEADERS)
+	$(ACC_CC) $(CPPFLAGS) $(ACC_CFLAGS) $(ACC_SOURCES) src/force_serial.c tests/test_openacc.c -o $@ $(LDLIBS)
+
+test_openacc: $(BUILD_DIR)/test_openacc
+	./$(BUILD_DIR)/test_openacc
+
 # OpenMP kernel tests: thread counts 1-8 against serial, sub-ranges, inputs.
 $(BUILD_DIR)/test_openmp: $(SERIAL_SOURCES) src/force_openmp.c tests/test_openmp.c $(HEADERS) | $(BUILD_DIR)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(OMP_CFLAGS) $(SERIAL_SOURCES) src/force_openmp.c tests/test_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)

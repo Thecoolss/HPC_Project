@@ -5,6 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
+#SBATCH --hint=nomultithread
 #SBATCH --mem=8G
 #
 # OPTIONAL but recommended: the CPU baseline for E6 that removes your only

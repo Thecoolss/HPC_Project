@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 #SBATCH --job-name=nbody-openacc
 #SBATCH --output=results/logs/openacc_%j.out
 #SBATCH --time=00:15:00
@@ -23,7 +23,9 @@
 cd "${SLURM_SUBMIT_DIR:?run this script with sbatch}"
 
 # Load modules before `set -u`; module scripts may read unset variables.
-NBODY_MODULES=nvhpc/25.7 . env/modules.sh
+# env/modules_openacc.sh purges first and loads nvhpc on its own, so the
+# NVHPC toolchain is never mixed with the EESSI GCC/OpenMPI modules (Sami review).
+. env/modules_openacc.sh
 set -euo pipefail
 
 N="${N:-1000}"

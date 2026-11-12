@@ -38,7 +38,7 @@ COMMON_SOURCES := src/particles.c src/integrator.c src/diagnostics.c \
                   src/config.c src/report.c
 SERIAL_SOURCES := $(COMMON_SOURCES) src/force_serial.c
 
-.PHONY: all test test-hybrid hybrid openacc clean FORCE
+.PHONY: all test test-hybrid hybrid openacc test_openacc clean FORCE
 
 # `all` needs the OpenMPI module (env/modules.sh) because of nbody_hybrid.
 all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp $(BUILD_DIR)/nbody_hybrid
@@ -85,17 +85,8 @@ test-hybrid: $(BUILD_DIR)/test_hybrid
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)
 
-openacc: $(BUILD_DIR)/nbody_openacc
-
-$(BUILD_DIR)/build_info_openacc: FORCE | $(BUILD_DIR)
-	@echo '$(ACC_BUILD_INFO)' | cmp -s - $@ || echo '$(ACC_BUILD_INFO)' > $@
-
-$(BUILD_DIR)/nbody_openacc: $(ACC_SOURCES) src/main_openacc.c $(HEADERS) $(BUILD_DIR)/build_info_openacc
-	$(ACC_CC) $(CPPFLAGS) -DNBODY_COMPILER='"$(ACC_CC)"' \
-	    -DNBODY_BUILD_FLAGS='"$(ACC_CFLAGS)"' -DNBODY_GIT_COMMIT='"$(GIT_COMMIT)"' \
-	    $(ACC_CFLAGS) $(ACC_SOURCES) src/main_openacc.c -o $@ $(LDLIBS)
-
-$(BUILD_DIR)/test_openacc: $(ACC_SOURCES) src/force_serial.c tests/test_openacc.c $(HEADERS)
+# OpenACC kernel tests against serial (GPU node, nvhpc module).
+$(BUILD_DIR)/test_openacc: $(ACC_SOURCES) src/force_serial.c tests/test_openacc.c $(HEADERS) | $(BUILD_DIR)
 	$(ACC_CC) $(CPPFLAGS) $(ACC_CFLAGS) $(ACC_SOURCES) src/force_serial.c tests/test_openacc.c -o $@ $(LDLIBS)
 
 test_openacc: $(BUILD_DIR)/test_openacc

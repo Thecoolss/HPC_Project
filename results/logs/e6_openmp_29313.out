@@ -1,0 +1,88 @@
+=== job metadata ===
+date=2026-11-13T22:09:08+01:00
+host=fortran
+slurm_job_id=29313
+slurm_job_name=e6-openmp-sweep
+slurm_partition=cpu
+slurm_nodelist=fortran
+slurm_ntasks=1
+slurm_cpus_per_task=32
+omp_num_threads=32
+omp_proc_bind=close
+omp_places=cores
+git_head=0e5dfd5f988fd29351c11ab83a5c0acb9a58477a
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      54%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+OMP_NUM_THREADS=32
+############ N=1000 STEPS=100 threads=32 ############
+command=./build/nbody_openmp --n 1000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== timed run N=1000 rep=1
+backend=openmp n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.022455863 loop_seconds=0.021333978 seconds_per_step=0.000213340 interactions_per_second=4.682671e+09 force_seconds=0.021417538 communication_seconds=0.000000000 integration_seconds=0.001029922
+=== timed run N=1000 rep=2
+backend=openmp n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.022472185 loop_seconds=0.021391427 seconds_per_step=0.000213914 interactions_per_second=4.670095e+09 force_seconds=0.021418599 communication_seconds=0.000000000 integration_seconds=0.001045423
+=== timed run N=1000 rep=3
+backend=openmp n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.022437888 loop_seconds=0.021371399 seconds_per_step=0.000213714 interactions_per_second=4.674472e+09 force_seconds=0.021399465 communication_seconds=0.000000000 integration_seconds=0.001030276
+############ N=10000 STEPS=100 threads=32 ############
+command=./build/nbody_openmp --n 10000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== timed run N=10000 rep=1
+backend=openmp n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=1.952674903 loop_seconds=1.932489116 seconds_per_step=0.019324891 interactions_per_second=5.174156e+09 force_seconds=1.943410954 communication_seconds=0.000000000 integration_seconds=0.009254606
+=== timed run N=10000 rep=2
+backend=openmp n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=1.952959442 loop_seconds=1.932811307 seconds_per_step=0.019328113 interactions_per_second=5.173293e+09 force_seconds=1.943730295 communication_seconds=0.000000000 integration_seconds=0.009220106
+=== timed run N=10000 rep=3
+backend=openmp n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=1.953518547 loop_seconds=1.933379474 seconds_per_step=0.019333795 interactions_per_second=5.171773e+09 force_seconds=1.944162077 communication_seconds=0.000000000 integration_seconds=0.009348399
+############ N=20000 STEPS=100 threads=32 ############
+command=./build/nbody_openmp --n 20000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== timed run N=20000 rep=1
+backend=openmp n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=7.778334762 loop_seconds=7.700442534 seconds_per_step=0.077004425 interactions_per_second=5.194247e+09 force_seconds=7.760419894 communication_seconds=0.000000000 integration_seconds=0.017905242
+=== timed run N=20000 rep=2
+backend=openmp n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=7.780376726 loop_seconds=7.702375419 seconds_per_step=0.077023754 interactions_per_second=5.192943e+09 force_seconds=7.762263879 communication_seconds=0.000000000 integration_seconds=0.018101407
+=== timed run N=20000 rep=3
+backend=openmp n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=7.781767518 loop_seconds=7.703810892 seconds_per_step=0.077038109 interactions_per_second=5.191976e+09 force_seconds=7.763563983 communication_seconds=0.000000000 integration_seconds=0.018194126
+############ N=100000 STEPS=10 threads=32 ############
+command=./build/nbody_openmp --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== timed run N=100000 rep=1
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=21.868215184 loop_seconds=19.941611160 seconds_per_step=1.994161116 interactions_per_second=5.014590e+09 force_seconds=21.858027144 communication_seconds=0.000000000 integration_seconds=0.010185154
+=== timed run N=100000 rep=2
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=21.993211753 loop_seconds=20.068061621 seconds_per_step=2.006806162 interactions_per_second=4.982992e+09 force_seconds=21.983007952 communication_seconds=0.000000000 integration_seconds=0.010200193
+=== timed run N=100000 rep=3
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29313 git_commit=serial-baseline-v1-43-g0e5dfd5f988f compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=22.165520112 loop_seconds=20.238403280 seconds_per_step=2.023840328 interactions_per_second=4.941052e+09 force_seconds=22.154946286 communication_seconds=0.000000000 integration_seconds=0.010570030
+JobID           JobName    Elapsed   TotalCPU     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- --------------- ---------- 
+29313        e6-openmp+   00:01:46  50:10.524                    fortran    RUNNING 
+29313.batch       batch   00:01:46   00:00:00                    fortran    RUNNING 
+29313.0      nbody_ope+   00:00:01  00:00.745      9988K         fortran  COMPLETED 
+29313.1      nbody_ope+   00:00:00  00:00.735      8324K         fortran  COMPLETED 
+29313.2      nbody_ope+   00:00:00  00:00.743      8676K         fortran  COMPLETED 
+29313.3      nbody_ope+   00:00:03  01:02.475      9244K         fortran  COMPLETED 
+29313.4      nbody_ope+   00:00:02  01:02.489      9636K         fortran  COMPLETED 
+29313.5      nbody_ope+   00:00:03  01:02.503      9884K         fortran  COMPLETED 
+29313.6      nbody_ope+   00:00:08  04:08.897      8348K         fortran  COMPLETED 
+29313.7      nbody_ope+   00:00:08  04:08.967      8756K         fortran  COMPLETED 
+29313.8      nbody_ope+   00:00:08  04:09.011     10048K         fortran  COMPLETED 
+29313.9      nbody_ope+   00:00:23  11:27.173      8404K         fortran  COMPLETED 
+29313.10     nbody_ope+   00:00:22  11:31.869     10116K         fortran  COMPLETED 
+29313.11     nbody_ope+   00:00:23  11:34.913      9256K         fortran  COMPLETED 

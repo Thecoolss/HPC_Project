@@ -168,6 +168,26 @@ python3 scripts/logs_to_csv.py results/logs/openmp_28604.out \
 Speedups use the serial times above as the baseline (N = 20,000: job 28027;
 N = 100,000: job 28028).
 
+## Figures 1–3
+
+Built from `results/scaling_runs.csv` and `results/serial_runs.csv`, so
+regenerate those first if a log changes. On the login node (light work):
+
+```sh
+module load matplotlib/3.7.2-gfbf-2023a
+python3 scripts/plot_results.py
+```
+
+| Figure | File | Data |
+|---|---|---|
+| 1 | `results/figures/fig1_openmp_scaling.png` | E2 (job 28604): speedup and efficiency over 1 thread |
+| 2 | `results/figures/fig2_mpi_scaling.png` | E3 (job 28860): speedup over serial job 28028 (both on `fortran`) |
+| 3 | `results/figures/fig3_splits_nodes.png` | E4 (28858) and E5 (28859): s/step per split, 1 and 2 nodes |
+
+The matplotlib module uses the same GCC 12.3.0 toolchain as `env/modules.sh`.
+Load it in a fresh shell or after `env/modules.sh`, not after
+`env/modules_openacc.sh`.
+
 ## Hybrid correctness on the cluster
 
 ```sh
@@ -178,6 +198,38 @@ Job 28692 (`git_head` `3cf8754`, nodes `fortran` and `haskell`) compares
 `nbody_hybrid` with `nbody_serial` through `scripts/compare_states.py`
 (N = 1,000, 100 steps): 1, 2, 3, 4, 7 and 8 ranks on one node; 2, 3, 8 and 16
 ranks on two nodes; and 2, 4 and 8 ranks × 2 threads on two nodes. All PASS. Log: `results/logs/validate_hybrid_28692.out`.
+
+## Bottleneck analysis (E7, in progress)
+
+Threads vs ranks on the same 32 cores. Pure OpenMP at N = 100,000, pinned to
+`fortran` like E4:
+
+```sh
+. env/modules.sh && make
+sbatch --nodelist=fortran --export=ALL,N=100000,STEPS=10,THREADS=32 slurm/openmp.sbatch
+```
+
+| Run | Job | Node | Binary | s/step (median of 3) |
+|---|---:|---|---|---:|
+| OpenMP, 1 × 32 threads | 29092 | `fortran` | `9dd27ddeb5ef` | 1.039 |
+| Hybrid, 1 rank × 32 threads (E4) | 28858 | `fortran` | `cf072160ebc9` | 1.058 |
+| Pure MPI, 32 ranks × 1 thread (E3/E4) | 28858, 28860 | `fortran` | `cf072160ebc9` | 0.979 |
+
+Only the Makefile, `env/` and docs changed between `cf07216` and `9dd27dd`, not
+the force code. Notes: `results/profiling/e7_threads_vs_ranks.md`.
+
+Vectorization report of the force kernel (compile only, login node):
+
+```sh
+. env/modules.sh
+gcc -std=c11 -O2 -fopenmp -Iinclude -fopt-info-vec-missed \
+    -c src/force_openmp.c -o /dev/null 2> results/profiling/vectorization_O2.txt
+```
+
+The inner force loop is not vectorized ("control flow in loop" from the
+`j == i` test; `sqrt` "clobbers memory" through `errno`). Output:
+`results/profiling/vectorization_O2.txt`. GCC's internal temporary names (e.g.
+`_96`) can differ between compiler versions; the messages do not.
 
 ## OpenACC (E6, in progress)
 

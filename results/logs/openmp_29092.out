@@ -1,0 +1,57 @@
+=== job metadata ===
+date=2026-11-13T15:02:15+01:00
+host=fortran
+slurm_job_id=29092
+slurm_job_name=nbody-openmp
+slurm_partition=cpu
+slurm_nodelist=fortran
+slurm_ntasks=1
+slurm_cpus_per_task=32
+omp_num_threads=unset
+omp_proc_bind=close
+omp_places=cores
+git_head=9dd27ddeb5effd24c333c5032a827ad579b5439b
+git_worktree=clean
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      53%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+threads_list=32
+command=./build/nbody_openmp --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== check run threads=32
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29092 git_commit=serial-baseline-v1-40-g9dd27ddeb5ef compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.513249320 loop_seconds=10.543106092 seconds_per_step=1.054310609 interactions_per_second=9.484776e+09 force_seconds=11.506100231 communication_seconds=0.000000000 integration_seconds=0.007146703 initial_energy=-0.47055129572309962 final_energy=-0.47055129572013732 energy_change=2.9622970743048427e-12 relative_energy_change=-6.2953754483932707e-12 initial_momentum_x=0 initial_momentum_y=0 initial_momentum_z=0 momentum_x=-6.0053932856809224e-20 momentum_y=-2.4894827715395921e-20 momentum_z=-1.7966362904651761e-20
+=== timed run threads=32 rep=1
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29092 git_commit=serial-baseline-v1-40-g9dd27ddeb5ef compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.508624255 loop_seconds=10.539192399 seconds_per_step=1.053919240 interactions_per_second=9.488298e+09 force_seconds=11.500054414 communication_seconds=0.000000000 integration_seconds=0.008568207
+=== timed run threads=32 rep=2
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29092 git_commit=serial-baseline-v1-40-g9dd27ddeb5ef compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.357592362 loop_seconds=10.387557561 seconds_per_step=1.038755756 interactions_per_second=9.626806e+09 force_seconds=11.349531049 communication_seconds=0.000000000 integration_seconds=0.008059571
+=== timed run threads=32 rep=3
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=fortran slurm_job_id=29092 git_commit=serial-baseline-v1-40-g9dd27ddeb5ef compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.315500638 loop_seconds=10.344859819 seconds_per_step=1.034485982 interactions_per_second=9.666540e+09 force_seconds=11.308292641 communication_seconds=0.000000000 integration_seconds=0.007206458
+JobID           JobName    Elapsed   TotalCPU  AllocCPUS     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- ---------- --------------- ---------- 
+29092        nbody-ope+   00:01:22  24:15.401         64                    fortran    RUNNING 
+29092.batch       batch   00:01:22   00:00:00         64                    fortran    RUNNING 
+29092.0      nbody_ope+   00:00:40  06:25.488         64      8260K         fortran  COMPLETED 
+29092.1      nbody_ope+   00:00:12  05:56.432         64      9032K         fortran  COMPLETED 
+29092.2      nbody_ope+   00:00:12  05:57.842         64      8568K         fortran  COMPLETED 
+29092.3      nbody_ope+   00:00:12  05:55.637         64      8228K         fortran  COMPLETED 

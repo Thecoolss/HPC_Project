@@ -1,5 +1,9 @@
 #define _POSIX_C_SOURCE 200809L
 
+#ifndef NBODY_OPENMP_BACKEND
+#define NBODY_OPENMP_BACKEND "openmp"
+#endif
+
 #include "config.h"
 #include "nbody.h"
 #include "report.h"
@@ -86,7 +90,7 @@ int main(int argc, char **argv)
     const double total_end = now_seconds();
 
     const RunReport run = {
-        .backend = "openmp",
+        .backend = NBODY_OPENMP_BACKEND,
         .mpi_ranks = 1,
         .omp_threads = omp_get_max_threads(),
         .nodes = 1,

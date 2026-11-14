@@ -41,7 +41,7 @@ SERIAL_SOURCES := $(COMMON_SOURCES) src/force_serial.c
 .PHONY: all test test-hybrid hybrid openacc test_openacc clean FORCE
 
 # `all` needs the OpenMPI module (env/modules.sh) because of nbody_hybrid.
-all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp $(BUILD_DIR)/nbody_hybrid
+all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp $(BUILD_DIR)/nbody_openmp_simd $(BUILD_DIR)/nbody_hybrid
 
 $(BUILD_DIR):
 	mkdir -p $@
@@ -81,6 +81,11 @@ $(BUILD_DIR)/test_hybrid: src/decomposition.c tests/test_hybrid.c include/nbody.
 
 test-hybrid: $(BUILD_DIR)/test_hybrid
 	./$(BUILD_DIR)/test_hybrid
+
+# SIMD variant of the OpenMP kernel: same main loop, different force kernel.
+# Built beside nbody_openmp so the scalar before-version stays reproducible.
+$(BUILD_DIR)/nbody_openmp_simd: $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c $(HEADERS) $(BUILD_DIR)/build_info
+	$(CC) $(CPPFLAGS) $(BUILD_INFO_CPPFLAGS) $(CFLAGS) $(OMP_CFLAGS) -DNBODY_OPENMP_BACKEND='"openmp_simd"' $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
 
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)

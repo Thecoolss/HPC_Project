@@ -5,17 +5,16 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
+#SBATCH --hint=nomultithread
+#SBATCH --nodelist=haskell
 #SBATCH --mem=8G
 #
-# OPTIONAL but recommended: the CPU baseline for E6 that removes your only
-# cross-team dependency. Runs the OpenMP backend at 32 threads across the same
-# N values as the GPU sweep, so you own a true best-CPU curve for the crossover
-# figure instead of waiting on Gustave/Athul for OpenMP-32 at every N.
-#
-# 32 threads = the 32 physical cores (hyperthreading off; per-user cap is 64
-# CPUs). Build with the GCC/OpenMPI env first:
-#     . env/modules.sh && make
-#     sbatch slurm/e6_openmp_sweep.sbatch
+# CPU baseline for E6: OpenMP-32 across the same N as the GPU sweep.
+# Must match the GPU node and use real cores, or the crossover is meaningless
+# (Sami/Athul review on #14): --nodelist=haskell (same node as the Ada sweep),
+# --hint=nomultithread (one thread per physical core), and --cpus-per-task on
+# srun (newer Slurm does not propagate the batch allocation to the step).
+# Sanity: N=20k should land near 0.039 s/step, not 0.077.
 
 cd "${SLURM_SUBMIT_DIR:?run this script with sbatch}"
 
@@ -49,7 +48,8 @@ for i in "${!NS[@]}"; do
     echo "command=./build/nbody_openmp ${ARGS[*]}"
     for rep in $(seq 1 "$REPS"); do
         echo "=== timed run N=$N rep=$rep"
-        srun ./build/nbody_openmp "${ARGS[@]}"
+        srun --ntasks=1 --cpus-per-task="${SLURM_CPUS_PER_TASK}" --hint=nomultithread \
+            ./build/nbody_openmp "${ARGS[@]}"
     done
 done
 

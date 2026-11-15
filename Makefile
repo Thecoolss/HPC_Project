@@ -84,8 +84,11 @@ test-hybrid: $(BUILD_DIR)/test_hybrid
 
 # SIMD variant of the OpenMP kernel: same main loop, different force kernel.
 # Built beside nbody_openmp so the scalar before-version stays reproducible.
+# -fno-math-errno lets GCC vectorize the sqrt in the force loop (sqrt otherwise
+# "clobbers memory" through errno). Only this target uses it.
+SIMD_CFLAGS = -fno-math-errno
 $(BUILD_DIR)/nbody_openmp_simd: $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c $(HEADERS) $(BUILD_DIR)/build_info
-	$(CC) $(CPPFLAGS) $(call build_meta,$(CC),$(CFLAGS) $(OMP_CFLAGS)) $(CFLAGS) $(OMP_CFLAGS) -DNBODY_OPENMP_BACKEND='"openmp_simd"' $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
+	$(CC) $(CPPFLAGS) $(call build_meta,$(CC),$(CFLAGS) $(OMP_CFLAGS) $(SIMD_CFLAGS)) $(CFLAGS) $(OMP_CFLAGS) $(SIMD_CFLAGS) -DNBODY_OPENMP_BACKEND='"openmp_simd"' $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
 
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)

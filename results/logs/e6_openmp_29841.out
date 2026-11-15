@@ -1,0 +1,88 @@
+=== job metadata ===
+date=2026-11-14T19:19:31+01:00
+host=haskell
+slurm_job_id=29841
+slurm_job_name=e6-openmp-sweep
+slurm_partition=cpu
+slurm_nodelist=haskell
+slurm_ntasks=1
+slurm_cpus_per_task=32
+omp_num_threads=32
+omp_proc_bind=close
+omp_places=cores
+git_head=cb4ef19435535b792c43106b6e2c84bc3abf0184
+git_worktree=dirty
+cc=cc (GCC) 12.3.0
+--- modules
+
+Currently Loaded Modules:
+  1) GCCcore/12.3.0                     8) libevent/2.1.12-GCCcore-12.3.0
+  2) GCC/12.3.0                         9) UCX/1.14.1-GCCcore-12.3.0
+  3) numactl/2.0.16-GCCcore-12.3.0     10) libfabric/1.18.0-GCCcore-12.3.0
+  4) libxml2/2.11.4-GCCcore-12.3.0     11) PMIx/4.2.4-GCCcore-12.3.0
+  5) libpciaccess/0.17-GCCcore-12.3.0  12) UCC/1.2.0-GCCcore-12.3.0
+  6) hwloc/2.9.1-GCCcore-12.3.0        13) OpenMPI/4.1.5-GCC-12.3.0
+  7) OpenSSL/1.1
+
+ 
+
+--- cpu
+CPU(s):                                  512
+Model name:                              AMD EPYC 9755 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      53%
+NUMA node(s):                            2
+--- gpu
+No devices were found
+=== end metadata ===
+OMP_NUM_THREADS=32
+############ N=1000 STEPS=100 threads=32 ############
+command=./build/nbody_openmp --n 1000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== timed run N=1000 rep=1
+backend=openmp n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.012630129 loop_seconds=0.011725485 seconds_per_step=0.000117255 interactions_per_second=8.519903e+09 force_seconds=0.011840530 communication_seconds=0.000000000 integration_seconds=0.000781647
+=== timed run N=1000 rep=2
+backend=openmp n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.012678110 loop_seconds=0.011785394 seconds_per_step=0.000117854 interactions_per_second=8.476594e+09 force_seconds=0.011886628 communication_seconds=0.000000000 integration_seconds=0.000783052
+=== timed run N=1000 rep=3
+backend=openmp n=1000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.012685550 loop_seconds=0.011814807 seconds_per_step=0.000118148 interactions_per_second=8.455491e+09 force_seconds=0.011900792 communication_seconds=0.000000000 integration_seconds=0.000776253
+############ N=10000 STEPS=100 threads=32 ############
+command=./build/nbody_openmp --n 10000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== timed run N=10000 rep=1
+backend=openmp n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.981055856 loop_seconds=0.970052746 seconds_per_step=0.009700527 interactions_per_second=1.030769e+10 force_seconds=0.974404356 communication_seconds=0.000000000 integration_seconds=0.006643075
+=== timed run N=10000 rep=2
+backend=openmp n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.980284019 loop_seconds=0.969511158 seconds_per_step=0.009695112 interactions_per_second=1.031344e+10 force_seconds=0.973526297 communication_seconds=0.000000000 integration_seconds=0.006749538
+=== timed run N=10000 rep=3
+backend=openmp n=10000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=0.980898183 loop_seconds=0.970322012 seconds_per_step=0.009703220 interactions_per_second=1.030483e+10 force_seconds=0.974079290 communication_seconds=0.000000000 integration_seconds=0.006810138
+############ N=20000 STEPS=100 threads=32 ############
+command=./build/nbody_openmp --n 20000 --steps 100 --dt 0.001 --eps 0.01 --seed 42
+=== timed run N=20000 rep=1
+backend=openmp n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=3.896264689 loop_seconds=3.856809526 seconds_per_step=0.038568095 interactions_per_second=1.037075e+10 force_seconds=3.882803843 communication_seconds=0.000000000 integration_seconds=0.013449512
+=== timed run N=20000 rep=2
+backend=openmp n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=3.895537317 loop_seconds=3.855898663 seconds_per_step=0.038558987 interactions_per_second=1.037320e+10 force_seconds=3.881551394 communication_seconds=0.000000000 integration_seconds=0.013971831
+=== timed run N=20000 rep=3
+backend=openmp n=20000 steps=100 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=3.899057616 loop_seconds=3.859694188 seconds_per_step=0.038596942 interactions_per_second=1.036300e+10 force_seconds=3.885454582 communication_seconds=0.000000000 integration_seconds=0.013592302
+############ N=100000 STEPS=10 threads=32 ############
+command=./build/nbody_openmp --n 100000 --steps 10 --dt 0.001 --eps 0.01 --seed 42
+=== timed run N=100000 rep=1
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.294653770 loop_seconds=10.329057154 seconds_per_step=1.032905715 interactions_per_second=9.681329e+09 force_seconds=11.285626962 communication_seconds=0.000000000 integration_seconds=0.009021271
+=== timed run N=100000 rep=2
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.129201647 loop_seconds=10.163095018 seconds_per_step=1.016309502 interactions_per_second=9.839424e+09 force_seconds=11.119785917 communication_seconds=0.000000000 integration_seconds=0.009410784
+=== timed run N=100000 rep=3
+backend=openmp n=100000 steps=10 G=1 dt=0.001 epsilon=0.01 seed=42 mpi_ranks=1 omp_threads=32 nodes=1 gpu_model="none" host=haskell slurm_job_id=29841 git_commit=serial-baseline-v1-45-gcb4ef1943553 compiler=cc compiler_version="12.3.0" build_flags="-std=c11 -O2 -Wall -Wextra -Wpedantic -Wshadow -Wstrict-prototypes -Werror -fopenmp" elapsed_seconds=11.184964310 loop_seconds=10.219340563 seconds_per_step=1.021934056 interactions_per_second=9.785269e+09 force_seconds=11.174713237 communication_seconds=0.000000000 integration_seconds=0.010246346
+JobID           JobName    Elapsed   TotalCPU     MaxRSS        NodeList      State 
+------------ ---------- ---------- ---------- ---------- --------------- ---------- 
+29841        e6-openmp+   00:00:58  25:07.198                    haskell    RUNNING 
+29841.batch       batch   00:00:58   00:00:00                    haskell    RUNNING 
+29841.0      nbody_ope+   00:00:01  00:00.430     10156K         haskell  COMPLETED 
+29841.1      nbody_ope+   00:00:00  00:00.434      9240K         haskell  COMPLETED 
+29841.2      nbody_ope+   00:00:01  00:00.430      9768K         haskell  COMPLETED 
+29841.3      nbody_ope+   00:00:01  00:31.390      9452K         haskell  COMPLETED 
+29841.4      nbody_ope+   00:00:02  00:31.363      9948K         haskell  COMPLETED 
+29841.5      nbody_ope+   00:00:01  00:31.383      9828K         haskell  COMPLETED 
+29841.6      nbody_ope+   00:00:05  02:04.679      8904K         haskell  COMPLETED 
+29841.7      nbody_ope+   00:00:04  02:04.656     12536K         haskell  COMPLETED 
+29841.8      nbody_ope+   00:00:04  02:04.772      9016K         haskell  COMPLETED 
+29841.9      nbody_ope+   00:00:12  05:47.043     10308K         haskell  COMPLETED 
+29841.10     nbody_ope+   00:00:12  05:43.173     12476K         haskell  COMPLETED 
+29841.11     nbody_ope+   00:00:11  05:47.439      9040K         haskell  COMPLETED 

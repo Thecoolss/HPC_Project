@@ -31,16 +31,21 @@ def read_timed_runs(path):
                 if row["run_kind"] == "timed"]
 
 
-def median_time(runs, **match):
-    """Median seconds_per_step of the runs whose columns have these values.
+def time_range(runs, **match):
+    """Median, minimum and maximum seconds_per_step of the matching runs.
 
-    Example: median_time(runs, backend="openmp", n=20000, omp_threads=4)
+    Example: time_range(runs, backend="openmp", n=20000, omp_threads=4)
     """
     times = [float(run["seconds_per_step"]) for run in runs
              if all(run[key] == str(value) for key, value in match.items())]
     if not times:
         raise ValueError(f"no timed runs found for {match}")
-    return statistics.median(times)
+    return statistics.median(times), min(times), max(times)
+
+
+def median_time(runs, **match):
+    """Median seconds_per_step of the matching runs (see time_range)."""
+    return time_range(runs, **match)[0]
 
 
 def save(figure, name):
@@ -97,18 +102,29 @@ def figure_mpi(runs, serial_runs):
     ranks = [1] + ranks
     speedup = [1.0] + [serial_time / t for t in times]
 
-    figure, axis = plt.subplots(figsize=(6, 4.5))
-    axis.plot(ranks, ranks, "k--", label="ideal")
-    axis.plot(ranks, speedup, "o-", label="pure MPI (1 thread per rank)")
-    axis.set_xscale("log", base=2)
-    axis.set_yscale("log", base=2)
-    axis.set_xticks(ranks, [str(r) for r in ranks])
-    axis.set_yticks(ranks, [str(r) for r in ranks])
-    axis.set_xlabel("MPI ranks")
-    axis.set_ylabel("speedup over serial")
-    axis.grid(True, alpha=0.3)
-    axis.legend()
-    axis.set_title("Figure 2: MPI strong scaling, N = 100,000 (E3)")
+    efficiency = [100 * s / r for s, r in zip(speedup, ranks)]
+
+    figure, (left, right) = plt.subplots(1, 2, figsize=(10, 4))
+
+    left.plot(ranks, ranks, "k--", label="ideal")
+    left.plot(ranks, speedup, "o-", label="pure MPI (1 thread per rank)")
+    left.set_yscale("log", base=2)
+    left.set_yticks(ranks, [str(r) for r in ranks])
+    left.set_xlabel("MPI ranks")
+    left.set_ylabel("speedup over serial")
+    left.legend()
+
+    right.plot(ranks, efficiency, "o-")
+    right.set_xlabel("MPI ranks")
+    right.set_ylabel("parallel efficiency (%)")
+    right.set_ylim(0, 110)
+
+    for axis in (left, right):
+        axis.set_xscale("log", base=2)
+        axis.set_xticks(ranks, [str(r) for r in ranks])
+        axis.grid(True, alpha=0.3)
+
+    figure.suptitle("Figure 2: MPI strong scaling, N = 100,000, one node (E3)")
     save(figure, "fig2_mpi_scaling.png")
 
 
@@ -121,24 +137,33 @@ def figure_splits(runs):
 
     figure, axis = plt.subplots(figsize=(8, 4.5))
     for nodes, shift in [(1, -width / 2), (2, width / 2)]:
-        xs, ys = [], []
+        xs, ys, below, above = [], [], [], []
         for position, (r, t) in zip(positions, splits):
             try:
-                ys.append(median_time(runs, backend="hybrid", n=100000,
-                                      nodes=nodes, mpi_ranks=r, omp_threads=t))
+                median, low, high = time_range(
+                    runs, backend="hybrid", n=100000, nodes=nodes,
+                    mpi_ranks=r, omp_threads=t)
             except ValueError:
                 continue  # e.g. 1x32 cannot run on 2 nodes
             xs.append(position + shift)
+            ys.append(median)
+            below.append(median - low)
+            above.append(high - median)
         name = "1 node" if nodes == 1 else "2 nodes (16 + 16 cores)"
-        bars = axis.bar(xs, ys, width, label=name)
-        axis.bar_label(bars, fmt="%.3f", fontsize=8)
+        # Error bars show the fastest and slowest of the repetitions.
+        bars = axis.bar(xs, ys, width, yerr=[below, above], capsize=3,
+                        label=name)
+        # Values written inside the bars, so neighbouring labels never overlap.
+        axis.bar_label(bars, fmt="%.3f", label_type="center", rotation=90,
+                       fontsize=8, color="white")
 
     axis.set_xticks(positions, labels)
     axis.set_xlabel("MPI ranks x OpenMP threads (32 cores in total)")
     axis.set_ylabel("median seconds per step")
-    axis.set_ylim(0, 1.35)
-    axis.legend()
-    axis.set_title("Figure 3: ranks x threads splits, N = 100,000 (E4, E5)")
+    axis.set_ylim(0, 1.5)
+    axis.legend(loc="upper left", ncol=2)
+    axis.set_title("Figure 3: ranks x threads splits, N = 100,000 (E4, E5);\n"
+                   "error bars: fastest and slowest of the repetitions")
     save(figure, "fig3_splits_nodes.png")
 
 

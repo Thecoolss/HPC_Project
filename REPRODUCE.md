@@ -231,28 +231,49 @@ The inner force loop is not vectorized ("control flow in loop" from the
 `results/profiling/vectorization_O2.txt`. GCC's internal temporary names (e.g.
 `_96`) can differ between compiler versions; the messages do not.
 
-## OpenACC (E6, in progress)
+## OpenACC and GPU vs CPU (E6)
 
-The job builds `nbody_openacc` on the GPU node and compares it with
-`nbody_serial`, so build the serial reference first:
+One RTX 6000 Ada (`haskell`) against OpenMP on 32 cores of the same node, at
+N = 1,000, 10,000, 20,000 and 100,000. Both scripts pin `haskell`, and the CPU
+sweep uses `--hint=nomultithread` with `--cpus-per-task` passed to `srun`.
 
 ```sh
-. env/modules.sh && make
+. env/modules.sh && make                  # nbody_serial (reference) and nbody_openmp
+sbatch slurm/e6_openmp_sweep.sbatch       # CPU: 32 threads on haskell
+
+# in a new login shell (see the nvhpc note below)
 . env/modules_openacc.sh
-sbatch slurm/openacc.sbatch                              # any GPU
-sbatch --gres=gpu:rtx6000ada:1 slurm/openacc.sbatch      # pin Ada (cc89)
-sbatch --export=ALL,N=20000,STEPS=20 slurm/openacc.sbatch
+sbatch slurm/e6_openacc_sweep.sbatch      # builds nbody_openacc on the GPU node
+
+python3 scripts/plot_e6_crossover.py results/logs/e6_openacc_28906.out \
+    results/logs/e6_openmp_29841.out results/logs/serial_*.out \
+    --out results/e6_crossover
 ```
+
+The last command regenerates `results/e6_crossover.csv` exactly (checked) and,
+with `module load matplotlib/3.7.2-gfbf-2023a`, `results/e6_crossover.png`.
+
+| Run | Job | Node / device | Binary | Log |
+|---|---:|---|---|---|
+| OpenACC sweep | 28906 | `haskell`, RTX 6000 Ada | `ff22609c62e5`, `-acc -gpu=cc89,cc120` | `results/logs/e6_openacc_28906.out` |
+| OpenMP baseline | 29841 | `haskell`, 32 cores | `cb4ef1943553` | `results/logs/e6_openmp_29841.out` |
+
+Job 29841's metadata shows `git_worktree=dirty`: a tracked file was modified
+when the job ran, but the binary was built from clean `cb4ef19` (its
+`git_commit` has no `-dirty` suffix). Its N = 20,000 time (0.0386 s/step)
+matches E2 (0.0389 s/step, job 28604).
+
+| N | GPU s/step | CPU, 32 threads, s/step | Faster |
+|---:|---:|---:|---|
+| 1,000 | 0.000809 | 0.000118 | CPU, 6.9× |
+| 10,000 | 0.00724 | 0.00970 | GPU, 1.3× |
+| 20,000 | 0.0275 | 0.0386 | GPU, 1.4× |
+| 100,000 | 0.407 | 1.022 | GPU, 2.5× |
+
+All GPU runs pass the comparison with serial. The first single-N check, job
+28623 (`results/logs/openacc_28623.out`, N = 1,000), also passed.
 
 Run the OpenACC commands in their own login shell. `module purge` does not
 undo nvhpc's `PATH` change, so `. env/modules.sh` afterwards in the same shell
 links with `/usr/bin/ld` and the hybrid build fails with `undefined reference
-to hwloc_...` (`env/modules.sh` now warns about this).
-
-Load `env/modules_openacc.sh` before `sbatch` while `slurm/openacc.sbatch`
-starts with plain `#!/bin/bash`: the job does not load modules itself yet
-(job 28623 logs `module command not available`).
-
-| Job | Node / GPU | `git_head` | N, steps | Result | Log |
-|---:|---|---|---|---|---|
-| 28623 | `haskell`, RTX 6000 Ada | `a302966` | 1,000, 100 | Kernel tests and comparison with serial PASS; median 0.78 ms/step (3.9× serial) | `results/logs/openacc_28623.out` |
+to hwloc_...` (`env/modules.sh` warns about this).

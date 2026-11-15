@@ -1,7 +1,7 @@
 # EuroHPC scale-up plan (draft)
 
-Owners: Matheus, Fernando. Status: draft v0, 13 Nov. Numbers marked
-"after E6" or "after E8" will be updated when those experiments land.
+Owners: Matheus, Fernando. Status: draft v1, 15 Nov (E6 added). Numbers
+marked "after E8" will be updated when the SIMD results land.
 
 ## 1. Why a larger system
 
@@ -28,10 +28,16 @@ node; Slingshot-11 at 200 Gb/s). It is the closest match to our development
 nodes (AMD EPYC, x86, Slurm), so the MPI + OpenMP code and job scripts port
 with few changes.
 
-**GPU comparison (after E6): Leonardo Booster** (3,456 nodes; 4 × NVIDIA A100
-64 GB per node; HDR InfiniBand 200 Gb/s). Our OpenACC backend is built with
-NVIDIA's `nvc`, so it moves there by changing `-gpu=cc89,cc120` to
-`-gpu=cc80`. LUMI-G's AMD GPUs would need a different compiler path.
+**GPU: Leonardo Booster** (3,456 nodes; 4 × NVIDIA A100 64 GB per node; HDR
+InfiniBand 200 Gb/s). E6 showed the GPU is worth it above N ≈ 10,000: one
+RTX 6000 Ada was 2.5× faster than 32 CPU cores of the same node at
+N = 100,000 (0.407 vs 1.022 s/step, 75× serial), with host–device transfers at
+0.05% of the run [jobs 28906, 29841]. Our kernel is double precision, and the
+RTX 6000 Ada is a workstation card whose FP64 rate is a small fraction of its
+FP32 rate; the A100 is a data-centre card with a 9.7 TFLOPS FP64 peak, so we
+expect the GPU's lead to grow there. Our OpenACC backend is built with
+NVIDIA's `nvc`, so it moves to Leonardo by adding `-gpu=cc80`. LUMI-G's AMD
+MI250X GPUs are also strong in FP64 but would need a different compiler path.
 
 ## 3. Requirements and estimates
 
@@ -59,9 +65,26 @@ efficiency, 128 cores per node, so about 4 × 10¹⁰ interactions/s per node.
 | | Subtotal | | 915 |
 | | With 20% margin for failed and repeated jobs | | **≈ 1,100** |
 
-That is about 140,000 core-hours on LUMI-C. A GPU request for Leonardo is
-added after E6 shows where the GPU beats the CPU. If the SIMD kernel (E8)
-speeds up each core by a factor k, every compute figure above divides by k.
+That is about 140,000 core-hours on LUMI-C. If the SIMD kernel (E8) speeds up
+each core by a factor k, every CPU figure above divides by k.
+
+**GPU request (Leonardo Booster).** Our OpenACC code uses one GPU, so running
+on many GPUs needs an MPI + OpenACC version (one rank per GPU, the same
+`MPI_Allgatherv` as the hybrid code): that is new work, done in step G2.
+Estimates use the rate we measured on the RTX 6000 Ada, 2.46 × 10¹⁰
+interactions/s per GPU at N = 100,000 (about 10¹¹ per 4-GPU node), so they
+are conservative for the A100.
+
+| Step | What | Runs | Node-hours |
+|---|---|---|---:|
+| G1 | Port to A100, validate, single-GPU N-sweep up to N = 1M | ~15 short | 5 |
+| G2 | Develop and test MPI + OpenACC, one rank per GPU | debugging | 20 |
+| G3 | Strong scaling, N = 10M, 5 steps, 1–8 nodes (4–32 GPUs) | 4 × 3 = 12 | 17 |
+| | With 20% margin | | **≈ 50** |
+
+If G3 scales, a 4-GPU node does about 2.5× the work of a LUMI-C node, so the
+production run (N = 10M, 1,000 steps) would need about 280 Leonardo node-hours
+on 16 nodes instead of 702 on LUMI-C.
 
 **Access route:** a Benchmark Access request (scalability tests, up to three
 months, monthly cut-offs) for steps A–D (about 215 node-hours), then Regular
@@ -105,4 +128,6 @@ advice on running OpenACC with multiple GPUs per node on Leonardo.
 
 - LUMI-C hardware: https://docs.lumi-supercomputer.eu/hardware/lumic/
 - Leonardo hardware: https://docs.hpc.cineca.it/hpc/leonardo.html
+- A100 FP64 peak (9.7 TFLOPS): https://getdeploying.com/gpus/nvidia-a100-vs-nvidia-rtx-6000-ada
+- E6 results: `results/e6_crossover.csv`, jobs 28906 and 29841
 - EuroHPC Benchmark Access: https://eurohpc-ju.europa.eu/eurohpc-ju-call-proposals-benchmark-access_en

@@ -100,21 +100,47 @@ Python 3 with matplotlib for the analysis scripts. GPU: NVIDIA HPC SDK
 ## 5. Expected scaling challenges
 
 1. **All-to-all communication.** Every rank receives all N positions each
-   step (24 N bytes, three `MPI_Allgatherv` calls). On our cluster
-   communication was 0–5.5% of a step on one node but 3–15% on two nodes
-   (E5, job 28859), and lowest with one rank per node (2 × 16: 35 ms vs
-   113–180 ms). Per-node traffic grows with the number of ranks per node, so
-   at scale we would run 1–2 ranks per node with threads, pack x/y/z into one
-   call, and test overlapping communication with computation (ring pipeline).
+   step (24 N bytes, three `MPI_Allgatherv` calls). Measured communication
+   per step at N = 100,000 (median of 3; jobs 28858 and 28859):
+
+   | Ranks per node | 1 node (32 cores) | 2 nodes (16 + 16 cores) |
+   |---:|---:|---:|
+   | 1 | 0 ms (0%) | 35 ms (3.2%) |
+   | 2 | 8 ms (0.8%) | 113 ms (9.7%) |
+   | 4 | 19 ms (1.8%) | 137 ms (11.8%) |
+   | 8 | 26 ms (2.5%) | 180 ms (15.3%) |
+   | 16 | 59 ms (5.5%) | 124 ms (11.4%) |
+   | 32 | 14 ms (1.4%) | – |
+
+   One rank per node is clearly cheapest between nodes. Beyond that the cost
+   does not grow with the bytes sent (16 ranks per node cost less than 8), so
+   it is not bandwidth alone. Two limits of these numbers: the reported time
+   is the maximum over ranks and includes time spent waiting inside
+   `MPI_Allgatherv` for slower ranks, not only transfer; and our nodes use
+   Open MPI over TCP (UCX crashed at 16 ranks on 2 nodes, jobs 28689–28690),
+   not a high-speed fabric. Even the best case is slow: at one rank per node
+   each rank receives 1.2 MB from the other node in 35 ms, about 34 MB/s.
+   At scale we would therefore run 1–2 ranks per node with threads, and test
+   packing x/y/z into one call and overlapping communication with
+   computation (ring pipeline). We did not implement packing on our cluster:
+   with these numbers we cannot tell whether it would help, so step A
+   measures transfer and waiting separately (a barrier before the gather).
 2. **Compute/communication ratio in strong scaling.** Compute per node falls
    as N²/P but each node still receives 24 N bytes, so efficiency drops at
-   high node counts and small N. At N = 10M this stays small (240 MB per node
-   per step at 200 Gb/s is about 10 ms against a 10–40 s step).
+   high node counts and small N. At N = 10M each node receives 240 MB per
+   step: about 10 ms at Slingshot's 200 Gb/s against a 10–40 s step. At the
+   rate we achieved over TCP (34 MB/s) it would be about 7 s, no longer
+   negligible, so the achieved bandwidth on LUMI-C is measured in step A
+   before the step C and D runs are submitted.
 3. **Threads vs ranks.** Pure MPI was 8% faster than one rank with 32
    threads (E4, E7), but the hybrid layout is the one that scales in memory
    and communication. Understanding that gap (E7) matters more at scale.
-4. **Per-core efficiency.** The force loop is not vectorized (E7). The same
-   code will run on a different CPU generation, so the per-core rate must be
+4. **Faster compute makes communication matter more.** The SIMD kernel (E8,
+   PR #21, 1.94× per core on haskell) is so far used only by the OpenMP
+   backend. If the hybrid backend uses it, compute halves while communication
+   does not change, so on two nodes communication would rise from 3–15% to
+   about 6–26% of a step (same measurements as item 1). The same code will
+   also run on a different CPU generation, so the per-core rate must be
    measured again before production.
 
 ## 6. Support needed

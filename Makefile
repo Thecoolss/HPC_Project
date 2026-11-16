@@ -25,7 +25,7 @@ ACC_FLAGS ?= -acc -gpu=cc89,cc120 -Minfo=accel
 ACC_CFLAGS = -std=c11 $(OPTFLAGS) $(WARNFLAGS) $(ACC_FLAGS)
 
 GIT_COMMIT := $(shell git describe --always --dirty --abbrev=12 2>/dev/null || echo unavailable)
-BUILD_INFO = $(GIT_COMMIT) | $(CC) | $(CFLAGS) | $(OMP_CFLAGS) | $(MPICC) | $(ACC_CC) | $(ACC_CFLAGS)
+BUILD_INFO = $(GIT_COMMIT) | $(CC) | $(CFLAGS) | $(OMP_CFLAGS) | $(MPICC) | $(ACC_CC) | $(ACC_CFLAGS) | $(SIMD_CFLAGS)
 # Build metadata embedded in a binary: $(call build_meta,COMPILER,FLAGS).
 # FLAGS must be the flags that binary was really compiled with.
 build_meta = -DNBODY_COMPILER='"$(1)"' -DNBODY_BUILD_FLAGS='"$(2)"' \

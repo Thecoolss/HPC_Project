@@ -1,7 +1,7 @@
 # EuroHPC scale-up plan (draft)
 
-Owners: Matheus, Fernando. Status: draft v1, 15 Nov (E6 added). Numbers
-marked "after E8" will be updated when the SIMD results land.
+Owners: Matheus, Fernando. Status: v2, 17 Nov (E6, E8 and section 5
+added).
 
 ## 1. Why a larger system
 
@@ -65,8 +65,14 @@ efficiency, 128 cores per node, so about 4 × 10¹⁰ interactions/s per node.
 | | Subtotal | | 915 |
 | | With 20% margin for failed and repeated jobs | | **≈ 1,100** |
 
-That is about 140,000 core-hours on LUMI-C. If the SIMD kernel (E8) speeds up
-each core by a factor k, every CPU figure above divides by k.
+That is about 140,000 core-hours on LUMI-C, at the scalar kernel's rate. E8
+measured the SIMD kernel at 1.94× per core on haskell (jobs 30410 and 30413,
+generic x86-64 build, 2 doubles per vector). It is used only by the OpenMP
+backend so far; once the hybrid backend uses it, the compute-bound steps B–E
+shrink by about that factor, to roughly 570 node-hours in total, and
+communication becomes a larger share of each step (section 5, item 4).
+LUMI-C's EPYC 7763 supports AVX2 (4 doubles per vector), so a build for that
+CPU could gain more; step A measures it.
 
 **GPU request (Leonardo Booster).** Our OpenACC code uses one GPU, so running
 on many GPUs needs an MPI + OpenACC version (one rank per GPU, the same

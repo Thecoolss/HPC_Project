@@ -16,6 +16,9 @@
 #     . env/modules.sh && make && sbatch slurm/openmp.sbatch
 # Override the workload without editing the script, e.g.
 #     sbatch --export=ALL,N=5000,THREADS="1 2 4" slurm/openmp.sbatch
+# BINARY picks the program (default build/nbody_openmp), e.g. the E8 SIMD run:
+#     sbatch --nodelist=haskell --job-name=nbody-openmp-simd \
+#         --export=ALL,BINARY=build/nbody_openmp_simd slurm/openmp.sbatch
 # The largest value in THREADS must not exceed --cpus-per-task.
 # The student QoS allows 64 CPUs per user; with --hint=nomultithread each core
 # counts as 2 CPUs, so 32 cores is the maximum.
@@ -33,32 +36,33 @@ EPS="${EPS:-0.01}"
 SEED="${SEED:-42}"
 REPS="${REPS:-3}"
 THREADS="${THREADS:-1 2 4 8 16 32}"
+BINARY="${BINARY:-build/nbody_openmp}"
 ARGS=(--n "$N" --steps "$STEPS" --dt "$DT" --eps "$EPS" --seed "$SEED")
 
 # One thread per physical core, threads packed next to each other.
 export OMP_PLACES=cores
 export OMP_PROC_BIND=close
 
-if [ ! -x build/nbody_openmp ]; then
-    echo "build/nbody_openmp not found; run 'make' first" >&2
+if [ ! -x "$BINARY" ]; then
+    echo "$BINARY not found; run 'make' first" >&2
     exit 1
 fi
 
 sh scripts/job_metadata.sh
 echo "threads_list=$THREADS"
-echo "command=./build/nbody_openmp ${ARGS[*]}"
+echo "command=./$BINARY ${ARGS[*]}"
 
 MAX_THREADS=$(echo "$THREADS" | tr ' ' '\n' | sort -n | tail -n 1)
 
 echo "=== check run threads=$MAX_THREADS"
 OMP_NUM_THREADS=$MAX_THREADS srun --ntasks=1 --cpus-per-task="$MAX_THREADS" \
-    --hint=nomultithread ./build/nbody_openmp "${ARGS[@]}" --check
+    --hint=nomultithread "./$BINARY" "${ARGS[@]}" --check
 
 for t in $THREADS; do
     for rep in $(seq 1 "$REPS"); do
         echo "=== timed run threads=$t rep=$rep"
         OMP_NUM_THREADS=$t srun --ntasks=1 --cpus-per-task="$t" \
-            --hint=nomultithread ./build/nbody_openmp "${ARGS[@]}"
+            --hint=nomultithread "./$BINARY" "${ARGS[@]}"
     done
 done
 

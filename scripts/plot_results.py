@@ -4,6 +4,7 @@
 Figure 1: OpenMP speedup and efficiency against threads (E2).
 Figure 2: pure MPI speedup against ranks, with the ideal line (E3).
 Figure 3: time per step for each ranks x threads split, 1 and 2 nodes (E4, E5).
+Figure 5: scalar against SIMD force kernel, before and after (E8).
 
 Usage, from the repository root on the cluster:
     module load matplotlib/3.7.2-gfbf-2023a
@@ -18,9 +19,11 @@ import statistics
 import matplotlib
 matplotlib.use("Agg")  # no screen on the cluster: draw straight to files
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter
 
 SCALING_CSV = "results/scaling_runs.csv"
 SERIAL_CSV = "results/serial_runs.csv"
+E8_CSV = "results/e8_runs.csv"
 FIGURE_DIR = "results/figures"
 
 
@@ -167,6 +170,44 @@ def figure_splits(runs):
     save(figure, "fig3_splits_nodes.png")
 
 
+def figure_simd(e8_runs):
+    """Figure 5: scalar and SIMD force kernel, N = 20,000, haskell (E8)."""
+    threads = [1, 2, 4, 8, 16, 32]
+    scalar = [median_time(e8_runs, backend="openmp", n=20000, omp_threads=t)
+              for t in threads]
+    simd = [median_time(e8_runs, backend="openmp_simd", n=20000,
+                        omp_threads=t) for t in threads]
+    gain = [s / v for s, v in zip(scalar, simd)]
+
+    figure, (left, right) = plt.subplots(1, 2, figsize=(10, 4))
+
+    left.plot(threads, scalar, "o-", label="scalar kernel (before)")
+    left.plot(threads, simd, "s-", label="SIMD kernel (after)")
+    left.set_xscale("log", base=2)
+    left.set_yscale("log", base=2)
+    left.yaxis.set_major_formatter(FormatStrFormatter("%g"))  # 0.5, not 2^-1
+    left.set_xticks(threads, [str(t) for t in threads])
+    left.set_xlabel("OpenMP threads")
+    left.set_ylabel("median seconds per step")
+    left.grid(True, alpha=0.3)
+    left.legend()
+
+    # Speedup of SIMD over scalar at each thread count. The dashed line is
+    # the vector width of the generic x86-64 build: 2 doubles per instruction.
+    bars = right.bar([str(t) for t in threads], gain)
+    right.bar_label(bars, fmt="%.2f", label_type="center", fontsize=9,
+                    color="white")
+    right.axhline(2, color="k", linestyle="--",
+                  label="vector width (2 doubles)")
+    right.set_ylim(0, 2.5)
+    right.set_xlabel("OpenMP threads")
+    right.set_ylabel("speedup of SIMD over scalar")
+    right.legend(loc="lower right")
+
+    figure.suptitle("Figure 5: vectorized force kernel, N = 20,000, haskell (E8)")
+    save(figure, "fig5_simd.png")
+
+
 def main():
     os.makedirs(FIGURE_DIR, exist_ok=True)
     runs = read_timed_runs(SCALING_CSV)
@@ -174,6 +215,7 @@ def main():
     figure_openmp(runs)
     figure_mpi(runs, serial_runs)
     figure_splits(runs)
+    figure_simd(read_timed_runs(E8_CSV))
 
 
 if __name__ == "__main__":

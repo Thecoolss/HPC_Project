@@ -25,7 +25,7 @@ ACC_FLAGS ?= -acc -gpu=cc89,cc120 -Minfo=accel
 ACC_CFLAGS = -std=c11 $(OPTFLAGS) $(WARNFLAGS) $(ACC_FLAGS)
 
 GIT_COMMIT := $(shell git describe --always --dirty --abbrev=12 2>/dev/null || echo unavailable)
-BUILD_INFO = $(GIT_COMMIT) | $(CC) | $(CFLAGS) | $(OMP_CFLAGS) | $(MPICC) | $(ACC_CC) | $(ACC_CFLAGS)
+BUILD_INFO = $(GIT_COMMIT) | $(CC) | $(CFLAGS) | $(OMP_CFLAGS) | $(MPICC) | $(ACC_CC) | $(ACC_CFLAGS) | $(SIMD_CFLAGS)
 # Build metadata embedded in a binary: $(call build_meta,COMPILER,FLAGS).
 # FLAGS must be the flags that binary was really compiled with.
 build_meta = -DNBODY_COMPILER='"$(1)"' -DNBODY_BUILD_FLAGS='"$(2)"' \
@@ -41,7 +41,7 @@ SERIAL_SOURCES := $(COMMON_SOURCES) src/force_serial.c
 .PHONY: all test test-hybrid hybrid openacc test_openacc clean FORCE
 
 # `all` needs the OpenMPI module (env/modules.sh) because of nbody_hybrid.
-all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp $(BUILD_DIR)/nbody_hybrid
+all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp $(BUILD_DIR)/nbody_openmp_simd $(BUILD_DIR)/nbody_hybrid
 
 $(BUILD_DIR):
 	mkdir -p $@
@@ -81,6 +81,14 @@ $(BUILD_DIR)/test_hybrid: src/decomposition.c tests/test_hybrid.c include/nbody.
 
 test-hybrid: $(BUILD_DIR)/test_hybrid
 	./$(BUILD_DIR)/test_hybrid
+
+# SIMD variant of the OpenMP kernel: same main loop, different force kernel.
+# Built beside nbody_openmp so the scalar before-version stays reproducible.
+# -fno-math-errno lets GCC vectorize the sqrt in the force loop (sqrt otherwise
+# "clobbers memory" through errno). Only this target uses it.
+SIMD_CFLAGS = -fno-math-errno
+$(BUILD_DIR)/nbody_openmp_simd: $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c $(HEADERS) $(BUILD_DIR)/build_info
+	$(CC) $(CPPFLAGS) $(call build_meta,$(CC),$(CFLAGS) $(OMP_CFLAGS) $(SIMD_CFLAGS)) $(CFLAGS) $(OMP_CFLAGS) $(SIMD_CFLAGS) -DNBODY_OPENMP_BACKEND='"openmp_simd"' $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
 
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)

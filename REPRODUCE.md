@@ -188,6 +188,44 @@ The matplotlib module uses the same GCC 12.3.0 toolchain as `env/modules.sh`.
 Load it in a fresh shell or after `env/modules.sh`, not after
 `env/modules_openacc.sh`.
 
+## Optimization: SIMD force kernel (E8)
+
+`nbody_openmp_simd` is the OpenMP backend with a vectorized force loop
+(`src/force_openmp_simd.c`: no `j == i` branch, `omp simd` reduction) built
+with `-fno-math-errno` (`SIMD_CFLAGS` in the Makefile). `make` builds it next to
+the scalar `nbody_openmp`, so both versions stay reproducible. It is not in
+`make test`. Both runs use the same node, workload and thread counts:
+
+```sh
+. env/modules.sh && make
+sbatch --nodelist=haskell slurm/openmp.sbatch                  # scalar (before)
+sbatch --nodelist=haskell --job-name=nbody-openmp-simd \
+    --export=ALL,BINARY=build/nbody_openmp_simd slurm/openmp.sbatch   # SIMD (after)
+python3 scripts/logs_to_csv.py results/logs/openmp_30413.out \
+    results/logs/openmp_30410.out \
+    --csv results/e8_runs.csv --summary results/e8_summary.md
+```
+
+The last command regenerates `results/e8_runs.csv` and `results/e8_summary.md`
+exactly (checked). Figure 5 (`results/figures/fig5_simd.png`) comes from
+`python3 scripts/plot_results.py`, which now also reads `results/e8_runs.csv`.
+
+| Run | Job | Node | Binary | Log |
+|---|---:|---|---|---|
+| Scalar kernel (before) | 30413 | `haskell` | `b6fa5f6302e2` | `results/logs/openmp_30413.out` |
+| SIMD kernel (after) | 30410 | `haskell` | `b6fa5f6302e2`, `-fno-math-errno` | `results/logs/openmp_30410.out` |
+
+N = 20,000, 20 steps, median of 3. The SIMD kernel is 1.94× faster at 1 thread
+(1.215 → 0.626 s/step) and 1.93× at 32 threads (0.0387 → 0.0200 s/step), close
+to the 2 doubles per vector of a generic x86-64 build. It matches serial to
+rounding (compare_states PASS); it is not bit-identical because the sums are
+added in a different order. A `-march=znver4` build (8 doubles per vector,
+AVX-512) was not measured; it would have to be built inside the job, because
+the login node has no AVX.
+
+Jobs 30410 and 30413 ran before `BINARY` existed in `slurm/openmp.sbatch`;
+the commands above reproduce the same command lines (`command=` in each log).
+
 ## Hybrid correctness on the cluster
 
 ```sh

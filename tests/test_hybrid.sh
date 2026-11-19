@@ -10,11 +10,14 @@
 #     sh tests/test_hybrid.sh
 # MPIRUN defaults to srun inside Slurm and mpirun elsewhere; override with
 #     MPIRUN="mpirun -n" sh tests/test_hybrid.sh
+# BINARY picks the program (default build/nbody_hybrid), e.g.
+#     BINARY=build/nbody_hybrid_simd sh tests/test_hybrid.sh
 set -eu
 
 N="${N:-1000}"
 STEPS="${STEPS:-100}"
 RANK_COUNTS="${RANK_COUNTS:-1 2 3 4}"
+BINARY="${BINARY:-build/nbody_hybrid}"
 if [ -n "${SLURM_JOB_ID:-}" ]; then
     MPIRUN="${MPIRUN:-srun --mpi=pmix -n}"
 else
@@ -31,13 +34,13 @@ trap 'rm -rf "$tmpdir"' EXIT
 
 for ranks in $RANK_COUNTS; do
     OMP_NUM_THREADS="${OMP_NUM_THREADS:-1}" $MPIRUN "$ranks" \
-        ./build/nbody_hybrid --n "$N" --steps "$STEPS" \
+        "./$BINARY" --n "$N" --steps "$STEPS" \
         --output "$tmpdir/hybrid_$ranks.txt" >/dev/null
     if python3 scripts/compare_states.py "$tmpdir/ref.txt" \
         "$tmpdir/hybrid_$ranks.txt"; then
-        echo "hybrid ranks=$ranks: PASS"
+        echo "$BINARY ranks=$ranks: PASS"
     else
-        echo "hybrid ranks=$ranks: FAIL (does not match serial)" >&2
+        echo "$BINARY ranks=$ranks: FAIL (does not match serial)" >&2
         exit 1
     fi
 done

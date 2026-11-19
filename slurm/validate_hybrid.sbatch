@@ -21,6 +21,8 @@
 # repository root after building:
 #     . env/modules.sh && make && sbatch slurm/validate_hybrid.sbatch
 # The job fails (State=FAILED) if any comparison fails.
+# BINARY picks the program (default build/nbody_hybrid), e.g. the SIMD kernel:
+#     sbatch --export=ALL,BINARY=build/nbody_hybrid_simd slurm/validate_hybrid.sbatch
 
 cd "${SLURM_SUBMIT_DIR:?run this script with sbatch}"
 
@@ -31,6 +33,7 @@ set -euo pipefail
 export N="${N:-1000}"
 export STEPS="${STEPS:-100}"
 MPI_PLUGIN="${MPI_PLUGIN:-pmix}"
+export BINARY="${BINARY:-build/nbody_hybrid}"
 
 # tests/test_hybrid.sh writes state files from every node, so its temporary
 # directory must be on the shared filesystem, not node-local /tmp or
@@ -51,7 +54,7 @@ export OMPI_MCA_btl_tcp_if_include="${OMPI_MCA_btl_tcp_if_include:-10.205.20.0/2
 export OMPI_MCA_pml="${OMPI_MCA_pml:-ob1}"
 export OMPI_MCA_btl="${OMPI_MCA_btl:-self,vader,tcp}"
 
-for exe in build/nbody_serial build/nbody_hybrid; do
+for exe in build/nbody_serial "$BINARY"; do
     if [ ! -x "$exe" ]; then
         echo "$exe not found; run 'make' first" >&2
         exit 1
@@ -62,7 +65,7 @@ sh scripts/job_metadata.sh
 echo "mpi_version=$(mpirun --version 2>/dev/null | head -n 1)"
 echo "mpi_tcp_networks=$OMPI_MCA_btl_tcp_if_include"
 echo "mpi_pml=$OMPI_MCA_pml mpi_btl=$OMPI_MCA_btl"
-echo "workload: n=$N steps=$STEPS"
+echo "workload: n=$N steps=$STEPS binary=$BINARY"
 
 SRUN="srun --mpi=$MPI_PLUGIN --hint=nomultithread --cpu-bind=cores"
 

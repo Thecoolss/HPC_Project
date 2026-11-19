@@ -18,6 +18,8 @@
 # Two nodes, same 32 cores (16 per node); R must be divisible by the node count:
 #     sbatch --nodes=2 --ntasks-per-node=16 \
 #         --export=ALL,SPLITS="2x16 4x8 8x4 16x2 32x1" slurm/hybrid.sbatch
+# BINARY picks the program (default build/nbody_hybrid), e.g. the SIMD kernel:
+#     sbatch --export=ALL,BINARY=build/nbody_hybrid_simd slurm/hybrid.sbatch
 # Pure MPI strong scaling:
 #     sbatch --export=ALL,SPLITS="2x1 4x1 8x1 16x1 32x1" slurm/hybrid.sbatch
 # The student QoS allows 64 CPUs per user; with --hint=nomultithread each core
@@ -37,6 +39,7 @@ SEED="${SEED:-42}"
 REPS="${REPS:-3}"
 SPLITS="${SPLITS:-1x32 2x16 4x8 8x4 16x2 32x1}"
 MPI_PLUGIN="${MPI_PLUGIN:-pmix}"
+BINARY="${BINARY:-build/nbody_hybrid}"
 ARGS=(--n "$N" --steps "$STEPS" --dt "$DT" --eps "$EPS" --seed "$SEED")
 
 NODES="$SLURM_JOB_NUM_NODES"
@@ -58,8 +61,8 @@ export OMPI_MCA_btl_tcp_if_include="${OMPI_MCA_btl_tcp_if_include:-10.205.20.0/2
 export OMPI_MCA_pml="${OMPI_MCA_pml:-ob1}"
 export OMPI_MCA_btl="${OMPI_MCA_btl:-self,vader,tcp}"
 
-if [ ! -x build/nbody_hybrid ]; then
-    echo "build/nbody_hybrid not found; run 'make' first" >&2
+if [ ! -x "$BINARY" ]; then
+    echo "$BINARY not found; run 'make' first" >&2
     exit 1
 fi
 
@@ -68,7 +71,7 @@ echo "mpi_version=$(mpirun --version 2>/dev/null | head -n 1)"
 echo "mpi_plugin=$MPI_PLUGIN nodes=$NODES cores=$CORES splits_list=$SPLITS"
 echo "mpi_tcp_networks=$OMPI_MCA_btl_tcp_if_include"
 echo "mpi_pml=$OMPI_MCA_pml mpi_btl=$OMPI_MCA_btl"
-echo "command=./build/nbody_hybrid ${ARGS[*]}"
+echo "command=./$BINARY ${ARGS[*]}"
 
 # Runs one split. Usage: run_split RANKS THREADS [extra program options]
 run_split() {
@@ -79,7 +82,7 @@ run_split() {
         --nodes="$NODES" --ntasks="$ranks" \
         --ntasks-per-node=$((ranks / NODES)) \
         --cpus-per-task="$threads" --hint=nomultithread --cpu-bind=cores \
-        ./build/nbody_hybrid "${ARGS[@]}" "$@"
+        "./$BINARY" "${ARGS[@]}" "$@"
 }
 
 # Check that every split fits the allocation before running anything.

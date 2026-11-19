@@ -41,7 +41,8 @@ SERIAL_SOURCES := $(COMMON_SOURCES) src/force_serial.c
 .PHONY: all test test-hybrid hybrid openacc test_openacc clean FORCE
 
 # `all` needs the OpenMPI module (env/modules.sh) because of nbody_hybrid.
-all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp $(BUILD_DIR)/nbody_openmp_simd $(BUILD_DIR)/nbody_hybrid
+all: $(BUILD_DIR)/nbody_serial $(BUILD_DIR)/nbody_openmp $(BUILD_DIR)/nbody_openmp_simd $(BUILD_DIR)/nbody_hybrid \
+     $(BUILD_DIR)/nbody_hybrid_simd
 
 $(BUILD_DIR):
 	mkdir -p $@
@@ -60,7 +61,7 @@ $(BUILD_DIR)/nbody_openmp: $(COMMON_SOURCES) src/force_openmp.c src/main_openmp.
 # Hybrid MPI+OpenMP backend; `make hybrid` builds only this one.
 HYBRID_SOURCES := $(COMMON_SOURCES) src/force_openmp.c src/decomposition.c
 
-hybrid: $(BUILD_DIR)/nbody_hybrid
+hybrid: $(BUILD_DIR)/nbody_hybrid $(BUILD_DIR)/nbody_hybrid_simd
 
 $(BUILD_DIR)/nbody_hybrid: $(HYBRID_SOURCES) src/main_hybrid.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(MPICC) $(CPPFLAGS) $(call build_meta,$(MPICC),$(CFLAGS) $(OMP_CFLAGS)) $(CFLAGS) $(OMP_CFLAGS) $(HYBRID_SOURCES) src/main_hybrid.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
@@ -89,6 +90,13 @@ test-hybrid: $(BUILD_DIR)/test_hybrid
 SIMD_CFLAGS = -fno-math-errno
 $(BUILD_DIR)/nbody_openmp_simd: $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(call build_meta,$(CC),$(CFLAGS) $(OMP_CFLAGS) $(SIMD_CFLAGS)) $(CFLAGS) $(OMP_CFLAGS) $(SIMD_CFLAGS) -DNBODY_OPENMP_BACKEND='"openmp_simd"' $(COMMON_SOURCES) src/force_openmp_simd.c src/main_openmp.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
+
+# Hybrid backend with the SIMD kernel: same MPI code as nbody_hybrid, force
+# kernel and flag from nbody_openmp_simd. The result line reads
+# backend=hybrid_simd.
+HYBRID_SIMD_SOURCES := $(COMMON_SOURCES) src/force_openmp_simd.c src/decomposition.c
+$(BUILD_DIR)/nbody_hybrid_simd: $(HYBRID_SIMD_SOURCES) src/main_hybrid.c $(HEADERS) $(BUILD_DIR)/build_info
+	$(MPICC) $(CPPFLAGS) $(call build_meta,$(MPICC),$(CFLAGS) $(OMP_CFLAGS) $(SIMD_CFLAGS)) $(CFLAGS) $(OMP_CFLAGS) $(SIMD_CFLAGS) -DNBODY_HYBRID_BACKEND='"hybrid_simd"' $(HYBRID_SIMD_SOURCES) src/main_hybrid.c -o $@ $(LDLIBS) $(OMP_LDLIBS)
 
 $(BUILD_DIR)/test_nbody: $(SERIAL_SOURCES) tests/test_nbody.c $(HEADERS) $(BUILD_DIR)/build_info
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SERIAL_SOURCES) tests/test_nbody.c -o $@ $(LDLIBS)

@@ -12,6 +12,10 @@
  *
  * Communication variant measured: baseline (three Allgatherv calls, x/y/z).
  */
+#ifndef NBODY_HYBRID_BACKEND
+#define NBODY_HYBRID_BACKEND "hybrid"
+#endif
+
 #include "config.h"
 #include "nbody.h"
 #include "report.h"
@@ -230,7 +234,7 @@ int main(int argc, char **argv)
     int exit_code = EXIT_SUCCESS;
     if (rank == 0) {
         const RunReport run = {
-            .backend = "hybrid",
+            .backend = NBODY_HYBRID_BACKEND,
             .mpi_ranks = ranks,
             .omp_threads = omp_get_max_threads(),
             .nodes = nodes,
